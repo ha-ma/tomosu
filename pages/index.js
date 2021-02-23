@@ -1,65 +1,94 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styled from 'styled-components'
+import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    <Body>
+      <BgWrapper>
+        <Image 
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          src="/teaser-bg.png"
+        />
+      </BgWrapper>
+      <TeaserContainer>
+        <Heading>
+          道東の未来を灯すSDGsマガジン
+        </Heading>
+        <TitleLogo>
+          <Image
+          quality={100}
+          width={460}
+          height={82}
+          src='/logo-wh.svg'
+          />
+        </TitleLogo>
+        <SubTitle>トモス</SubTitle>
+        <Description>
+          サイト公開準備中！
+        </Description>
+      </TeaserContainer>
+      <Copyright>&copy; Eastern Hokkaido SDGs</Copyright>
+    </Body>
+  );
 }
+
+const BgWrapper = styled.section`
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+`;
+
+const Body = styled.div`
+`
+
+
+
+const TeaserContainer = styled.div`
+  margin: 0 auto;
+  padding-top: 18%;
+`
+
+const Heading = styled.h2`
+  color: white;
+  font-size: 22px;
+  letter-spacing: 8px;
+  margin-bottom: 64px;
+  font-weight: 300;
+  text-align: center;
+`
+
+const TitleLogo = styled.h2`
+  margin-bottom: 48px;
+  text-align: center;
+`
+
+const SubTitle = styled.h1`
+  color: white;
+  font-size: 28px;
+  letter-spacing: 16px;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 88px;
+`
+
+const Description = styled.p`
+  color: #DAE000;
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+`
+
+const Copyright = styled.p`
+  width: 100vw;
+  color: white;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 2px;
+  position: absolute;
+  bottom: 5%;
+
+`
