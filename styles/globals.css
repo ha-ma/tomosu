@@ -1,5 +1,5 @@
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
 /* Reset box-model and set borders */
 /* ============================================ */
 
@@ -21,6 +21,7 @@
  */
 
 html {
+  font-family: 'Noto Sans JP', sans-serif;
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-tap-highlight-color: transparent; /* 3*/
