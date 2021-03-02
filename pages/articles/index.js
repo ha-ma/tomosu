@@ -1,12 +1,13 @@
 import React from "react";
 import Prismic from '@prismicio/client'
 import { Client } from "../../prismic-configuration";
+import ButtomContact from "../../components/BottomContact"
 
 const Artiles = ({ articles }) => {
   console.log('articles', articles);
   return (
   <div>
-    {/* <h1>hello</h1> */}
+    <ButtomContact />
     <ul>
       {
         articles.map(article => (
