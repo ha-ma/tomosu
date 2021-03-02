@@ -1,15 +1,12 @@
-// import styles from './ButtomContact.module.scss'
-import styles from './ButtomContact.module.scss'
+import Link from 'next/Link';
+import styles from './BottomContact.module.scss'
 
-export function ButtomContact() {
+export default function ButtomContact() {
   return (
-    <button
-      type="button"
-      // Note how the "error" class is accessed as a property on the imported
-      // `styles` object.
-      className={styles.error}
-    >
-      <span>Destroy</span>
-    </button>
+    <section className={styles.bottomContact}>
+      <h2 className={styles.bottomContact__heading}>お問い合わせ</h2>
+      <p className={styles.bottomContact__desc}>取材依頼・公園・ワークショップの企画のご相談などお気軽にご連絡ください。</p>
+      {/* <Link to="/contact" className={styles.bottomContact__link}>お問い合わせはこちら</Link> */}
+    </section>
   )
 }
