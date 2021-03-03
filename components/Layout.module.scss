@@ -1,3 +1,16 @@
 .layoutContainer {
   display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.layoutMain {
+  width:  calc(100% - 300px);
+  transition: all .5s ease;
+  @media (min-width: 1420px) {
+    width:  calc(100% - 420px);
+  }
+  @media (min-width: 1920px) {
+    width:  calc(100% - 520px);
+  }
 }

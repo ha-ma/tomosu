@@ -3,7 +3,7 @@ import styles from './GlobalNav.module.scss'
 
 function GlobalNav() {
   return (
-    <aside>
+    <aside className={styles.globalNav}>
       global nav
     </aside>
   )
