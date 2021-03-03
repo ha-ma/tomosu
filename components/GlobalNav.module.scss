@@ -1,0 +1,13 @@
+.globalNav {
+  max-width: 300px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @media (min-width: 1420px) {
+    max-width: 420px;
+  }
+  @media (min-width: 1920px) {
+    max-width: 520px;
+  }
+}
