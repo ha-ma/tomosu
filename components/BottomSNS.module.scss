@@ -53,4 +53,10 @@
       font-size: 14px;
     }
   }
+  &__newLine {
+    display: none;
+    @media (max-width: 700px) {
+      display: block;
+    }
+  }
 }
