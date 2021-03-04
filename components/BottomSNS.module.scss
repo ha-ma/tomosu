@@ -1,34 +1,56 @@
 .bottomSns {
-  color: #3B4043;
+  color: #3b4043;
   text-align: center;
   padding: 87px 4.2% 107px;
   box-sizing: border-box;
+  @media (max-width: 700px) {
+    padding: 44px 71px 58px;
+  }
   &__heading {
     font-size: 80px;
     font-weight: bold;
-    font-family: 'Noto Sans', sans-serif;
-    color: #B1B1B1;
+    font-family: "Noto Sans", sans-serif;
+    color: #b1b1b1;
     letter-spacing: 5px;
     margin-bottom: 84px;
+    @media (max-width: 700px) {
+      font-size: 34px;
+      margin-bottom: 41px;
+    }
   }
   &__list {
     margin-bottom: 84px;
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 700px) {
+      margin-bottom: 40px;
+    }
   }
   &__item {
     margin-right: 94px;
+    @media (max-width: 700px) {
+      margin-right: 40px;
+    }
     &:first-child {
       width: 38px;
+      @media (max-width: 700px) {
+        width: 16px;
+      }
     }
     &:last-child {
       width: 75px;
       margin-right: 0;
+      @media (max-width: 700px) {
+        width: 32px;
+      }
     }
   }
   &__desc {
     font-size: 30px;
     line-height: 1.6;
+    @media (max-width: 700px) {
+      font-size: 14px;
+    }
   }
 }
