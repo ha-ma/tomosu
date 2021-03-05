@@ -24,7 +24,7 @@ function BottomSNS() {
             </Link>
           </li>
         </ul>
-        <p className={styles.bottomSns__desc}>SNSでも情報発信中です! ぜひフォローしてみてください。</p>
+        <p className={styles.bottomSns__desc}>SNSでも情報発信中です! <br className={styles.bottomSns__newLine}/>ぜひフォローしてみてください。</p>
       </div>
     </section>
   )
