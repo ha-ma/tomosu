@@ -2,12 +2,11 @@ import React from 'react'
 import styles from '../../styles/sdgs.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
-// import PageHero from '../../components/PageHero'
-
+import PageHero from '../../components/PageHero'
 function Sdgs() {
   return (
     <>
-      {/* <PageHero /> */}
+      <PageHero />
       <section className={styles.sdgs}>
         <div className={styles.sdgs__container}>
           <h2 className={styles.sdgs__heading}>誰一人取り残さない世界を<br />共に実現していきませんか。</h2>
