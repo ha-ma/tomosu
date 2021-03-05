@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from '../../styles/privacy-policy.module.scss'
-// import PageHero from '../../components/PageHero'
+import PageHero from '../../components/PageHero'
 
-function privacy() {
+function Privacy() {
   return (
     <>
-      {/* <PageHero /> */}
+      <PageHero />
       <section className={styles.privacyPolicy}>
         <div className={styles.privacyPolicy__container}>
           <h2 className={styles.privacyPolicy__heading}>tomosuプライバシーポリシー</h2>
@@ -19,4 +19,4 @@ function privacy() {
   )
 }
 
-export default privacy
+export default Privacy

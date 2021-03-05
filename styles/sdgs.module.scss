@@ -1,0 +1,103 @@
+.sdgs {
+  padding: 100px 0 343px;
+  box-sizing: border-box;
+  @media (min-width: 768px) {
+    padding: 100px 83px 343px 0;
+  }
+  &__heading {
+    font-size: 54px;
+    font-weight: bold;
+    line-height: 1.6;
+    margin-bottom: 110px;
+  }
+  &__desc {
+    font-size: 24px;
+    line-height: 2.0;
+    margin-bottom: 151px;
+    &:last-child {
+      margin-bottom: 96px;
+    }
+  }
+  &__objective {
+    &__item {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 76px 84px 68px 73px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: flex-end;
+      background-color: #F8F8F8;
+      position: relative;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    &__icon {
+      width: 117px;
+      margin-right: 59px;
+      display: block;
+      @media (min-width: 768px) {
+        width: 266px;
+        margin-right: 0;
+        position: absolute;
+        top: 76px;
+        left: 73px;
+      }
+      &:hover {
+        opacity: .6;
+      }
+    }
+    &__detail {
+      width: 100%;
+      box-sizing: border-box;
+      @media (min-width: 768px) {
+        width: calc(100% - 266px);
+        padding-left: 69px;
+      }
+    }
+    &__headingBlock {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @media (min-width: 768px) {
+        margin-bottom: 0;
+        display: block;
+      }
+    }
+    &__heading {
+      font-size: 38px;
+      font-weight: bold;
+      line-height: 1.4;
+      text-align: center;
+      @media (min-width: 768px) {
+        text-align: left;
+        margin-bottom: 50px;
+      }
+      span {
+        font-family: 'Noto Sans', sans-serif;
+        display: block;
+        @media (min-width: 768px) {
+          display: inline;
+        }
+      }
+    }
+    &__desc {
+      font-size: 24px;
+      line-height: 1.6;
+      margin-bottom: 35px;
+      width: 100%;
+    }
+    &__link {
+      text-align: right;
+      a {
+        font-size: 26px;
+        display: inline-block;
+        &:hover {
+          opacity: .6;
+        }
+      }
+    }
+  }
+}
+
