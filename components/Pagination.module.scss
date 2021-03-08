@@ -1,0 +1,47 @@
+.Pagination {
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  &__item {
+    font-size: 31px;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: center;
+    min-width: 60px;
+    // min-width: 71px;
+    height: 60px;
+    margin: 0 5px;
+    padding: 11px 10px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    &.prev, &.next, &.first, &.last, &.ellipsis {
+      min-width: initial;
+      height: auto;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    &.prev, &.next {
+      padding: 0 10px;
+    }
+    &.first, &.last {
+      margin: 0;
+    }
+    &.first {
+      padding-left: 0;
+    }
+    &.last {
+      padding-right: 0;
+    }
+    &.ellipsis {
+      margin: 0;
+      background-color: transparent;
+    }
+    &.current, &:hover {
+      background-color: #FFE100;
+    }
+  }
+}
+
