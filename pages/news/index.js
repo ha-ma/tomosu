@@ -3,7 +3,7 @@ import styles from '../../styles/news.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import PageHero from '../../components/PageHero'
-import PagiNation from '../../components/pagination'
+import Pagination from '../../components/Pagination'
 
 function NewsList() {
   return (
@@ -186,7 +186,7 @@ function NewsList() {
                 </ul>
               </li>
             </ul>
-            <PagiNation />
+            <Pagination />
           </div>
         </div>
       </section>
