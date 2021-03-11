@@ -1,22 +1,51 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/index.module.scss'
+import Slide from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dotsClass: ['slick-dots', styles.home__slide__dot].join(' '),
+    customPaging: i => (
+      <div className={styles.home__slide__dotItem}>0{i + 1}</div>
+    )
+  };
   return (
     <section className={styles.home}>
       <div className={styles.home__container}>
         {/* slide */}
         <div className={styles.home__slide}>
-          <ul className={styles.home__slide__list}>
-            <li className={styles.home__slide__item}>
+          <Slide {...settings}>
+            <div className={styles.home__slide__item}>
               <Image src="/images/hero/top.png" quality={100} width={1400} height={1007} />
               <div className={styles.home__slide__heading}>
                 <p className={styles.home__slide__category}>セクション名</p>
                 <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
               </div>
-            </li>
-          </ul>
+            </div>
+            <div className={styles.home__slide__item}>
+              <Image src="/images/hero/top.png" quality={100} width={1400} height={1007} />
+              <div className={styles.home__slide__heading}>
+                <p className={styles.home__slide__category}>セクション名</p>
+                <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
+              </div>
+            </div>
+            <div className={styles.home__slide__item}>
+              <Image src="/images/hero/top.png" quality={100} width={1400} height={1007} />
+              <div className={styles.home__slide__heading}>
+                <p className={styles.home__slide__category}>セクション名</p>
+                <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
+              </div>
+            </div>
+          </Slide>
         </div>
         {/* Magazine */}
         <div className={styles.home__articles}>
