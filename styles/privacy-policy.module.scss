@@ -1,32 +1,59 @@
 .privacyPolicy {
   padding: 129px 83px 255px 0;
   box-sizing: border-box;
+  @media (max-width: 700px) {
+    padding: unset;
+    width: 83%;
+    margin: 0 auto 41px;
+  }
   &__heading {
     font-size: 44px;
     font-weight: bold;
     margin-bottom: 219px;
+    @media (max-width: 700px) {
+      font-size: 22px;
+      margin-bottom: 39px;
+    }
+    &__sp {
+      display: none;
+    }
   }
   &__desc {
     padding: 114px 92px 370px;
     box-sizing: border-box;
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
+    @media (max-width: 700px) {
+      padding: 48px 22px 218px;
+      border-radius: 15px;
+    }
   }
   &__text {
     font-size: 24px;
     line-height: 1.8;
     margin-bottom: 83px;
+    @media (max-width: 700px) {
+      font-size: 12px;
+    }
   }
   &__policy {
     &__text {
       font-size: 24px;
       line-height: 1.8;
       margin-bottom: 83px;
+      @media (max-width: 700px) {
+        font-size: 12px;
+        margin-bottom: 60px;
+      }
     }
   }
   &__subheading {
     font-size: 35px;
     font-weight: bold;
     margin-bottom: 50px;
+    @media (max-width: 700px) {
+      font-size: 27px;
+      margin-bottom: 30px;
+    }
   }
   dl {
     margin-bottom: 50px;
@@ -34,13 +61,16 @@
     dt {
       font-size: 30px;
       margin-bottom: 10px;
+      @media (max-width: 700px) {
+        font-size: 18px;
+      }
     }
     dd {
       font-size: 24px;
       line-height: 1.8;
+      @media (max-width: 700px) {
+        font-size: 12px;
+      }
     }
   }
 }
-
-
-
