@@ -6,7 +6,46 @@ import Image from 'next/image'
 function GlobalNav() {
   return (
     <aside className={styles.globalNav}>
+      <div className={styles.globalNav__logo}>
+        <p className={styles.globalNav__logo__catch}>道東の未来を灯す<br />SDGsマガジン</p>
+        <div className={styles.globalNav__logo__img}>
+          <Image src='/images/logo.png' quality={100} width={631} height={227} />
+        </div>
+      </div>
+
       <div className={styles.globalNav__container}>
+        <div className={styles.globalNav__splogo}>
+          <p className={styles.globalNav__splogo__catch}>道東の未来を灯すSDGsマガジン</p>
+          <div className={styles.globalNav__splogo__img}>
+            <Image src='/images/logo_wh.png' quality={100} width={353} height={72} />
+          </div>
+        </div>
+        <nav className={styles.globalNav__nav}>
+          <ul className={styles.globalNav__list}>
+            <li className={styles.globalNav__item}>
+              <Link href="/articles">
+                <a className={styles.globalNav__link}>記事一覧</a>
+              </Link>
+            </li>
+            <li className={styles.globalNav__item}>
+              <Link href="/about">
+                <a className={styles.globalNav__link}>私たちのこと</a>
+              </Link>
+            </li>
+            <li className={styles.globalNav__item}>
+              <Link href="/sdgs">
+                <a className={styles.globalNav__link}>SDGsについて</a>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+
+
+
+
+      {/* <div className={styles.globalNav__container}>
         <div className={styles.globalNav__logo}>
           <p className={styles.globalNav__logo__catch}>道東の未来を灯す<br />SDGsマガジン</p>
           <Image src='/images/logo.png' quality={100} width={631} height={227} className={styles.globalNav__logo__img} />
@@ -81,7 +120,7 @@ function GlobalNav() {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </aside>
   )
 }
