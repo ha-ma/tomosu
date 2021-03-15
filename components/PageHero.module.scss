@@ -6,6 +6,10 @@
       border-top-left-radius: 50px;
       border-bottom-left-radius: 50px;
       display: block!important;
+      @media (max-width: 700px) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
       img {
         width: 100%!important;
         height: auto!important;
@@ -19,6 +23,11 @@
     position: absolute;
     bottom: 70px;
     right: 6.9%;
+    @media (max-width: 700px) {
+      font-size: 23px;
+      bottom: 24px;
+      right: 30px;
+    }
   }
 }
 
