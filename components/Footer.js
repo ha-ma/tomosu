@@ -72,7 +72,11 @@ function Footer() {
           </div>
           <div className={styles.footer__logo}>
             <p className={styles.footer__logo__catch}>道東の未来を灯すSDGsマガジン</p>
-            <Image src='/images/logo_wh.png' quality={100} width={353} height={72} className={styles.footer__img} />
+            <Link href="/">
+              <a className={styles.footer__logo__link}>
+                <Image src='/images/logo_wh.png' quality={100} width={353} height={72} className={styles.footer__img} />
+              </a>
+            </Link>
           </div>
         </div>
         <p className={styles.footer__copy}>&copy; tomosu All Rights Reserved.</p>

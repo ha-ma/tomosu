@@ -48,54 +48,54 @@ const Article = ({ article }) => {
                     </Link>
                   </li>
                 </ul>
+                <ul className={styles.articlesdetail__heading__icon}>
+                  <li className={styles.articlesdetail__heading__iconItem}>
+                    <Image src="/images/icon/sdg_icon_01_ja.png" quality={100} width={1276} height={1276} />
+                  </li>
+                  <li className={styles.articlesdetail__heading__iconItem}>
+                    <Image src="/images/icon/sdg_icon_02_ja.png" quality={100} width={1276} height={1276} />
+                  </li>
+                  <li className={styles.articlesdetail__heading__iconItem}>
+                    <Image src="/images/icon/sdg_icon_01_ja.png" quality={100} width={1276} height={1276} />
+                  </li>
+                  <li className={styles.articlesdetail__heading__iconItem}>
+                    <Image src="/images/icon/sdg_icon_02_ja.png" quality={100} width={1276} height={1276} />
+                  </li>
+                  <li className={styles.articlesdetail__heading__iconItem}>
+                    <Image src="/images/icon/sdg_icon_01_ja.png" quality={100} width={1276} height={1276} />
+                  </li>
+                  <li className={styles.articlesdetail__heading__iconItem}>
+                    <Image src="/images/icon/sdg_icon_02_ja.png" quality={100} width={1276} height={1276} />
+                  </li>
+                  <li className={styles.articlesdetail__heading__iconItem}>
+                    <Image src="/images/icon/sdg_icon_01_ja.png" quality={100} width={1276} height={1276} />
+                  </li>
+                  <li className={styles.articlesdetail__heading__iconItem}>
+                    <Image src="/images/icon/sdg_icon_02_ja.png" quality={100} width={1276} height={1276} />
+                  </li>
+                </ul>
               </div>
-              <ul className={styles.articlesdetail__heading__icon}>
-                <li className={styles.articlesdetail__heading__iconItem}>
-                  <Image src="/images/icon/sdg_icon_01_ja.png" quality={100} width={1276} height={1276} />
+              <ul className={styles.articlesdetail__heading__snsList}>
+                <li className={styles.articlesdetail__heading__snsItem}>
+                  <Link href="/">
+                    <a className={styles.articlesdetail__heading__snsLink}>
+                      <div className={styles.articlesdetail__heading__snsImg}>
+                        <Image src="/images/icon/icon_fb_gr.png" quality={100} width={75} height={150} />
+                      </div>
+                    </a>
+                  </Link>
                 </li>
-                <li className={styles.articlesdetail__heading__iconItem}>
-                  <Image src="/images/icon/sdg_icon_02_ja.png" quality={100} width={1276} height={1276} />
-                </li>
-                <li className={styles.articlesdetail__heading__iconItem}>
-                  <Image src="/images/icon/sdg_icon_01_ja.png" quality={100} width={1276} height={1276} />
-                </li>
-                <li className={styles.articlesdetail__heading__iconItem}>
-                  <Image src="/images/icon/sdg_icon_02_ja.png" quality={100} width={1276} height={1276} />
-                </li>
-                <li className={styles.articlesdetail__heading__iconItem}>
-                  <Image src="/images/icon/sdg_icon_01_ja.png" quality={100} width={1276} height={1276} />
-                </li>
-                <li className={styles.articlesdetail__heading__iconItem}>
-                  <Image src="/images/icon/sdg_icon_02_ja.png" quality={100} width={1276} height={1276} />
-                </li>
-                <li className={styles.articlesdetail__heading__iconItem}>
-                  <Image src="/images/icon/sdg_icon_01_ja.png" quality={100} width={1276} height={1276} />
-                </li>
-                <li className={styles.articlesdetail__heading__iconItem}>
-                  <Image src="/images/icon/sdg_icon_02_ja.png" quality={100} width={1276} height={1276} />
+                <li className={styles.articlesdetail__heading__snsItem}>
+                  <Link href="/">
+                    <a className={styles.articlesdetail__heading__snsLink}>
+                      <div className={styles.articlesdetail__heading__snsImg}>
+                        <Image src="/images/icon/icon_tw_gr.png" quality={100} width={150} height={120} />
+                      </div>
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>
-            <ul className={styles.articlesdetail__heading__snsList}>
-              <li className={styles.articlesdetail__heading__snsItem}>
-                <Link href="/">
-                  <a className={styles.articlesdetail__heading__snsLink}>
-                    <div className={styles.articlesdetail__heading__snsImg}>
-                      <Image src="/images/icon/icon_fb_gr.png" quality={100} width={75} height={150} />
-                    </div>
-                  </a>
-                </Link>
-              </li>
-              <li className={styles.articlesdetail__heading__snsItem}>
-                <Link href="/">
-                  <a className={styles.articlesdetail__heading__snsLink}>
-                    <div className={styles.articlesdetail__heading__snsImg}>
-                      <Image src="/images/icon/icon_tw_gr.png" quality={100} width={150} height={120} />
-                    </div>
-                  </a>
-                </Link>
-              </li>
-            </ul>
           </div>
           <div className={styles.articlesdetail__content}>
             <h2>見出しh2道東の環境を見て触れて伝えていきたい</h2>
