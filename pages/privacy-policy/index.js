@@ -8,7 +8,7 @@ function Privacy() {
       <PageHero />
       <section className={styles.privacyPolicy}>
         <div className={styles.privacyPolicy__container}>
-          <h2 className={styles.privacyPolicy__heading}>tomosuプライバシーポリシー</h2>
+          <h2 className={styles.privacyPolicy__heading}><span className={styles.privacyPolicy__heading__sp}>tomosu</span>プライバシーポリシー</h2>
           <div className={styles.privacyPolicy__desc}>
             <p className={styles.privacyPolicy__text}>tomosu（以下、「当社」といいます。）は、本ウェブサイト（以下「本サイト」といいます。）上で提供するコンテンツにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。</p>
             

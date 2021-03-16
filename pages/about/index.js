@@ -10,7 +10,12 @@ function About() {
       <PageHero />
       <section className={styles.about}>
         <div className={styles.about__container}>
-          <h2 className={styles.about__heading}>北海道のひがし「道東」から共に<br />未来を照らすアクションを起こそう。</h2>
+          <h2 className={styles.about__heading}>
+            北海道のひがし「道東」から<br className={styles.about__heading__breakSP}/>
+            共に<br className={styles.about__heading__breakPC} />
+            未来を照らす<br className={styles.about__heading__breakSP}/>
+            アクションを起こそう。
+          </h2>
           <div className={styles.about__concept}>
             <p className={styles.about__concept__desc}>コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。コンセプトテキスト入ります。</p>
             <Image src="/images/logo_bk.png" quality={100} width={580} height={120} className={styles.about__concept__img} />
