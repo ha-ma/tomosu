@@ -1,6 +1,6 @@
 .footer {
   color: #fff;
-  background-color: #3B4043;
+  background-color: #3b4043;
   &__container {
     padding: 72px 4.2% 64px;
     box-sizing: border-box;
@@ -66,6 +66,9 @@
         font-size: 10px;
         margin-bottom: 11px;
       }
+    }
+    &__link {
+      display: inline-block;
     }
   }
   &__list {
