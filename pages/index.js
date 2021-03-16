@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 export default function Home() {
   const settings = {
     dots: true,
+    // arrows: false,
     infinite: true,
     autoplay: true,
     speed: 500,
@@ -15,7 +16,7 @@ export default function Home() {
     slidesToScroll: 1,
     dotsClass: ['slick-dots', styles.home__slide__dot].join(' '),
     customPaging: i => (
-      <div className={styles.home__slide__dotItem}>0{i + 1}</div>
+      <div className={styles.home__slide__dotItem}>{(i + 1).toString().padStart(2, '0')}</div>
     )
   };
   return (
@@ -25,25 +26,37 @@ export default function Home() {
         <div className={styles.home__slide}>
           <Slide {...settings}>
             <div className={styles.home__slide__item}>
-              <Image src="/images/hero/top.png" quality={100} width={1400} height={1007} />
-              <div className={styles.home__slide__heading}>
-                <p className={styles.home__slide__category}>セクション名</p>
-                <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
-              </div>
+              <Link href="articles/">
+                <a className={styles.home__slide__link}>
+                  <div className={styles.home__slide__img} style={{backgroundImage: 'url(/images/hero/top.png)'}}></div>
+                  <div className={styles.home__slide__heading}>
+                    <p className={styles.home__slide__category}>セクション名</p>
+                    <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
+                  </div>
+                </a>
+              </Link>
             </div>
             <div className={styles.home__slide__item}>
-              <Image src="/images/hero/top.png" quality={100} width={1400} height={1007} />
-              <div className={styles.home__slide__heading}>
-                <p className={styles.home__slide__category}>セクション名</p>
-                <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
-              </div>
+              <Link href="articles/">
+                <a className={styles.home__slide__link}>
+                  <div className={styles.home__slide__img} style={{backgroundImage: 'url(/images/hero/top.png)'}}></div>
+                  <div className={styles.home__slide__heading}>
+                    <p className={styles.home__slide__category}>セクション名</p>
+                    <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
+                  </div>
+                </a>
+              </Link>
             </div>
             <div className={styles.home__slide__item}>
-              <Image src="/images/hero/top.png" quality={100} width={1400} height={1007} />
-              <div className={styles.home__slide__heading}>
-                <p className={styles.home__slide__category}>セクション名</p>
-                <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
-              </div>
+              <Link href="articles/">
+                <a className={styles.home__slide__link}>
+                  <div className={styles.home__slide__img} style={{backgroundImage: 'url(/images/hero/top.png)'}}></div>
+                  <div className={styles.home__slide__heading}>
+                    <p className={styles.home__slide__category}>セクション名</p>
+                    <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
+                  </div>
+                </a>
+              </Link>
             </div>
           </Slide>
         </div>
@@ -218,6 +231,7 @@ export default function Home() {
                 </Link>
               </li>
             </ul>
+            <Link href="/news"><a className={styles.home__news__listLink}>〉お知らせ一覧へ</a></Link>
           </div>
         </div>
       </div>
