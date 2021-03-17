@@ -70,11 +70,11 @@
         top: 27px;
         left: 55px;
       }
+      @media (max-width: 768px) {
+        margin-right: auto;
+      }
       &:hover {
         opacity: 0.6;
-      }
-      @media (max-width: 1279px) {
-        margin-right: auto;
       }
     }
     &__detail {
