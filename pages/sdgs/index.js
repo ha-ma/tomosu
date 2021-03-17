@@ -61,7 +61,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_03_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>03.</span> すべての人に健康と福祉を</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>03.</span> すべての人に<br className={styles.sdgs__objective__heading__breakSP}/>
+                  健康と福祉を</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -79,7 +80,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_04_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>04.</span> 質の高い教育をみんなに</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>04.</span> 質の高い教育を<br className={styles.sdgs__objective__heading__breakSP}/>
+                  みんなに</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -97,7 +99,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_05_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>05.</span> ジェンダー平等を実現しよう</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>05.</span> ジェンダー平等を<br className={styles.sdgs__objective__heading__breakSP}/>
+                  実現しよう</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -115,7 +118,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_06_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>06.</span> 安全な水とトイレを世界中に</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>06.</span> 安全な水とトイレを<br className={styles.sdgs__objective__heading__breakSP}/>
+                  世界中に</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -133,7 +137,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_07_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>07.</span> エネルギーをみんなにそしてクリーンに</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>07.</span> エネルギーをみんなに<br className={styles.sdgs__objective__heading__breakSP}/>
+                  そしてクリーンに</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -151,7 +156,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_08_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>08.</span> 働きがいも経済成長も</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>08.</span> 働きがいも<br className={styles.sdgs__objective__heading__breakSP}/>
+                  経済成長も</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -169,7 +175,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_09_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>09.</span> 産業と技術革新の基盤をつくろう</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>09.</span> 産業と技術革新の<br className={styles.sdgs__objective__heading__breakSP}/>
+                  基盤をつくろう</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -187,7 +194,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_10_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>10.</span> 人や国の不平等をなくそう</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>10.</span> 人や国の不平等を<br className={styles.sdgs__objective__heading__breakSP}/>
+                  なくそう</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -205,7 +213,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_11_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>11.</span> 住み続けられるまちづくりを</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>11.</span> 住み続けられる<br className={styles.sdgs__objective__heading__breakSP}/>
+                  まちづくりを</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -223,7 +232,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_12_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>12.</span> つくる責任つかう責任</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>12.</span> つくる責任<br className={styles.sdgs__objective__heading__breakSP}/>
+                  つかう責任</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -241,7 +251,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_13_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>13.</span> 気候変動に具体的な対策を</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>13.</span> 気候変動に<br className={styles.sdgs__objective__heading__breakSP}/>
+                  具体的な対策を</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -295,7 +306,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_16_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>16.</span> 平和と公正をすべての人に</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>16.</span> 平和と公正を<br className={styles.sdgs__objective__heading__breakSP}/>
+                  すべての人に</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
@@ -313,7 +325,8 @@ function Sdgs() {
                       <Image src="/images/icon/sdg_icon_17_ja.png" quality={100} width={1276} height={1276} className={styles.sdgs__objective__icon__img} />
                     </a>
                   </Link>
-                  <h3 className={styles.sdgs__objective__heading}><span>17.</span> パートナーシップで目標を達成しよう</h3>
+                  <h3 className={styles.sdgs__objective__heading}><span>17.</span> パートナーシップで<br className={styles.sdgs__objective__heading__breakSP}/>
+                  目標を達成しよう</h3>
                 </div>
                 <p className={styles.sdgs__objective__desc}>簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。簡単な説明テキストなどは入ります。</p>
                 <div className={styles.sdgs__objective__link}>
