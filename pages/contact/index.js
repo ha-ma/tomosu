@@ -9,7 +9,8 @@ function Contact() {
       <section className={styles.contact}>
         <div className={styles.contact__container}>
           <p className={styles.contact__desc}>各種お問い合わせ、tomosuへの取材依頼・情報提供、<br />
-             また、道東SDGs推進協議会への講演・ワークショップの企画など<br />お気軽にご相談・ご連絡ください。</p>
+             また、道東SDGs推進協議会への講演・<br className={styles.contact__desc__breakSP}  />
+             ワークショップの企画など<br className={styles.contact__desc__breakPC}/>お気軽にご相談・ご連絡ください。</p>
 
           <form className={styles.contact__form}>
             <h2 className={styles.contact__heading}>お問い合わせフォーム</h2>
