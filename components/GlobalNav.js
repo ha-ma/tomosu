@@ -6,7 +6,7 @@ import Image from 'next/image'
 function GlobalNav() {
   if (typeof window !== 'undefined') {
     //　スクロールでロゴ拡大・縮小
-    if(window.innerWidth > 1279) {
+    // if(window.innerWidth > 1279) {
       window.onscroll = function(){
         const logoScale = document.getElementById('globalNav__logo');
         if(document.documentElement.scrollTop > 20) {
@@ -19,7 +19,7 @@ function GlobalNav() {
           }
         }
       };
-    }
+    // }
     // SPメニューボタン
     if(window.innerWidth < 1279) {
       const spNav = document.getElementById('globalNav__spNav');

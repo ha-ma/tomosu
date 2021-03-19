@@ -45,11 +45,24 @@
     div {
       width: 100%;
       height: 100%;
+      border-top-left-radius: 50px;
+      border-bottom-left-radius: 50px;
+      @media (max-width: 1279px) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
     }
     &__item {
       width: 100%;
       height: 100%;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
       position: relative;
+      div {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      // overflow: hidden;
     }
     &__link {
       width: 100%;
@@ -716,13 +729,13 @@
       &:hover {
         opacity: .6;
       }
-      &:first-child {
+      &__pc {
         display: flex;
         @media (max-width: 1279px) {
           display: none;
         }
       }
-      &:last-child {
+      &__sp {
         display: none;
         @media (max-width: 1279px) {
           margin: 0;
@@ -835,9 +848,30 @@
   padding: 0 102px;
   position: relative;
   top: 45px;
+  @media (max-width: 1700px) {
+    top: 36px;
+  }
+  @media (max-width: 1599px) {
+    top: 30px;
+  }
+  @media (max-width: 1439px) {
+    top: 27px;
+  }
   @media (max-width: 1279px) {
     margin-bottom: 37px;
     position: static;
   }
 }
 
+
+.visHidden {
+  opacity: 0;
+  transition: all .2s ease;
+}
+.fadeInUp {
+  opacity: 1;
+  transition: opacity 1s ease;
+  --animate-duration: 1s;
+  --animate-delay: .4s;
+  
+}

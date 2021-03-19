@@ -64,7 +64,7 @@
         width: 450px;
       }
       @media (max-width: 1279px) {
-        width: 140px;
+        width: 308px;
       }
       & > div {
         display: block!important;
@@ -370,6 +370,9 @@
   }
   @media (max-width: 1439px) {
     width: 308px;
+  }
+  @media (max-width: 1279px) {
+    width: 140px;
   }
 }
 .open {
