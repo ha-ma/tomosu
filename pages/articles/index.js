@@ -43,7 +43,7 @@ const Artiles = ({ articles }) => {
                     <ul className={styles.articleslist__tag}>
                       {
                         article.tags.map(tag => (
-                          <li className={styles.articleslist__tag__item}>
+                          <li key={tag.id} className={styles.articleslist__tag__item}>
                             <span href="/" className={styles.articleslist__tag__link}>#{tag}</span>
                           </li>
                         ))
