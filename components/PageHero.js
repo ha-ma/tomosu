@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 import styles from './PageHero.module.scss'
 import Image from 'next/image'
 
-function PageHero() {
+function PageHero(props) {
   const router = useRouter();
   const path = router.pathname;
-  const imagePath = path === "/articles" ? "/images/hero/magazine.png" : path === "/about" ? "/images/hero/about.png" : path === "/sdgs" ? "/images/hero/whatwedo.png" : path === "/contact" ? "/images/hero/contact.png" : path === "/news" ? "/images/hero/news.png" : path === "/privacy-policy" ? "/images/hero/privacypolicy.png" : "/images/hero/top.png"
+  const imagePath = path === "/articles/" ? props.imagePath : path === "/articles" ? "/images/hero/magazine.png" : path === "/about" ? "/images/hero/about.png" : path === "/sdgs" ? "/images/hero/whatwedo.png" : path === "/contact" ? "/images/hero/contact.png" : path === "/news" ? "/images/hero/news.png" : path === "/privacy-policy" ? "/images/hero/privacypolicy.png" : "/images/hero/top.png"
 
   return (
     <section className={styles.PageHero}>
