@@ -8,7 +8,6 @@ import PageHero from '../../components/PageHero'
 import Pagination from '../../components/Pagination'
 
 const Artiles = ({ articles }) => {
-  console.log("articles", articles);
   return (
     <>
       <PageHero />
@@ -23,8 +22,8 @@ const Artiles = ({ articles }) => {
 
               {
                 articles.map(article => (
-                  <li className={styles.articleslist__item}>
-                    <Link href="/articles">
+                  <li key={article.id} className={styles.articleslist__item}>
+                    <Link href={`/articles/${article.uid}`}>
                       <a className={styles.articleslist__link}>
                         <div className={styles.articleslist__img}>
                           {
@@ -36,25 +35,26 @@ const Artiles = ({ articles }) => {
                           }
                         </div>
                         <ul className={styles.articleslist__category}>
-                          <li className={styles.articleslist__category__item}>セクション名</li>
+                          <li className={styles.articleslist__category__item}>{article.data.categories}</li>
                         </ul>
-                        <h3 className={styles.articleslist__item__heading}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</h3>
+                        <h3 className={styles.articleslist__item__heading}>{article.data.title[0].text}</h3>
                       </a>
                     </Link>
                     <ul className={styles.articleslist__tag}>
-                      <li className={styles.articleslist__tag__item}>
-                        <Link href="/"><a className={styles.articleslist__tag__link}>#ハッシュタグ</a></Link>
-                      </li>
-                      <li className={styles.articleslist__tag__item}>
-                        <Link href="/"><a className={styles.articleslist__tag__link}>#ハッシュタグ</a></Link>
-                      </li>
+                      {
+                        article.tags.map(tag => (
+                          <li className={styles.articleslist__tag__item}>
+                            <span href="/" className={styles.articleslist__tag__link}>#{tag}</span>
+                          </li>
+                        ))
+                      }
                     </ul>
                   </li>
                 ))
               }
 
             </ul>
-            <Pagination />
+            {/* <Pagination /> */}
           </div>
         </div>
       </section>
@@ -70,7 +70,6 @@ export async function getStaticProps({ params }) {
     // orderings: "[my.article.date desc]"
   });
 
-  console.log('articles prismic', articles);
   return {
     props: {
       articles: articles ? articles.results : []
