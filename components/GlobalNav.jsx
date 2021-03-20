@@ -1,46 +1,72 @@
-import React from "react";
-import Link from 'next/link'
-import styles from './GlobalNav.module.scss'
-import Image from 'next/image'
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import styles from "./GlobalNav.module.scss";
+import Image from "next/image";
+import Prismic from "@prismicio/client";
+import { Client } from "../prismic-configuration";
 
 function GlobalNav() {
-  if (typeof window !== 'undefined') {
+  const [tags, setTags] = useState([]);
+  const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const client = Client();
+
+      const res = await client.query(Prismic.Predicates.at("document.type", "article"), {
+        // orderings: "[my.article.date desc]"
+      });
+      if (res) {
+
+        const tag_list = res.results.flatMap(article => {
+          return article.tags.map(tag => {
+            return tag;
+          })
+        })
+        setTags(tag_list)
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (typeof window !== "undefined") {
     //　スクロールでロゴ拡大・縮小
     // if(window.innerWidth > 1279) {
-      window.onscroll = function(){
-        const logoScale = document.getElementById('globalNav__logo');
-        if(document.documentElement.scrollTop > 20) {
-          if(logoScale){
-            logoScale.classList.add(styles.fixed)
-          }
-        } else {
-          if(logoScale){
-            logoScale.classList.remove(styles.fixed);
-          }
+    window.onscroll = function () {
+      const logoScale = document.getElementById("globalNav__logo");
+      if (document.documentElement.scrollTop > 20) {
+        if (logoScale) {
+          logoScale.classList.add(styles.fixed);
         }
-      };
+      } else {
+        if (logoScale) {
+          logoScale.classList.remove(styles.fixed);
+        }
+      }
+    };
     // }
     // SPメニューボタン
-    if(window.innerWidth < 1279) {
-      const spNav = document.getElementById('globalNav__spNav');
-      const spMenu = document.getElementById('globalNav__spMenu');
-      const spButton = document.getElementById('globalNav__spMenuButton');
-      if(spButton){
-        spButton.addEventListener('click', function(e){
-          spButton.classList.toggle(styles.open)
-          const spHasClass = spButton.classList.contains(styles.open)
-          if(spHasClass) {
-            spMenu.classList.add(styles.showMenu)
-            spNav.classList.add(styles.showNav)
-          } else {
-            spMenu.classList.remove(styles.showMenu)
-            spNav.classList.remove(styles.showNav)
-          }
-        },false);
+    if (window.innerWidth < 1279) {
+      const spNav = document.getElementById("globalNav__spNav");
+      const spMenu = document.getElementById("globalNav__spMenu");
+      const spButton = document.getElementById("globalNav__spMenuButton");
+      if (spButton) {
+        spButton.addEventListener(
+          "click",
+          function (e) {
+            spButton.classList.toggle(styles.open);
+            const spHasClass = spButton.classList.contains(styles.open);
+            if (spHasClass) {
+              spMenu.classList.add(styles.showMenu);
+              spNav.classList.add(styles.showNav);
+            } else {
+              spMenu.classList.remove(styles.showMenu);
+              spNav.classList.remove(styles.showNav);
+            }
+          },
+          false
+        );
       }
-      
-      
-      
     }
   }
   return (
@@ -50,7 +76,7 @@ function GlobalNav() {
         <div className={styles.globalNav__logo__img} id="globalNav__logo">
           <Link href="/">
             <a className={styles.globalNav__logo__link}>
-              <Image src='/images/logo.png' quality={100} width={631} height={227} />
+              <Image src="/images/logo.png" quality={100} width={631} height={227} />
             </a>
           </Link>
         </div>
@@ -61,7 +87,7 @@ function GlobalNav() {
           <div className={styles.globalNav__splogo__img}>
             <Link href="/">
               <a className={styles.globalNav__splogo__link}>
-                <Image src='/images/logo_wh.png' quality={100} width={353} height={72} />
+                <Image src="/images/logo_wh.png" quality={100} width={353} height={72} />
               </a>
             </Link>
           </div>
@@ -89,36 +115,13 @@ function GlobalNav() {
           <dt>キーワードから読む</dt>
           <dd>
             <ul className={styles.globalNav__keyword__list}>
-              <li className={styles.globalNav__keyword__item}>
-                <Link href="/article">
-                  <a className={styles.globalNav__keyword__link}>#ハッシュタグ</a>
-                </Link>
-              </li>
-              <li className={styles.globalNav__keyword__item}>
-                <Link href="/article">
-                  <a className={styles.globalNav__keyword__link}>#ハッシュタグ</a>
-                </Link>
-              </li>
-              <li className={styles.globalNav__keyword__item}>
-                <Link href="/article">
-                  <a className={styles.globalNav__keyword__link}>#ハッシュタグ</a>
-                </Link>
-              </li>
-              <li className={styles.globalNav__keyword__item}>
-                <Link href="/article">
-                  <a className={styles.globalNav__keyword__link}>#ハッシュタグ</a>
-                </Link>
-              </li>
-              <li className={styles.globalNav__keyword__item}>
-                <Link href="/article">
-                  <a className={styles.globalNav__keyword__link}>#ハッシュタグ</a>
-                </Link>
-              </li>
-              <li className={styles.globalNav__keyword__item}>
-                <Link href="/article">
-                  <a className={styles.globalNav__keyword__link}>#ハッシュタグ</a>
-                </Link>
-              </li>
+              {tags.map(tag => (
+                <li key={tag} className={styles.globalNav__keyword__item}>
+                  <Link href={{ pathname: '/articles', query: { tag: tag } }}>
+                    <a className={styles.globalNav__keyword__link}>#{tag}</a>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </dd>
         </dl>
@@ -139,23 +142,25 @@ function GlobalNav() {
             <li className={styles.globalNav__bottomMenu__snsItem}>
               <Link href="#">
                 <a className={styles.globalNav__bottomMenu__snsLnk} target="_blank">
-                  <Image src='/images/icon/icon_fb_wh.png' quality={100} width={19} height={37} />
+                  <Image src="/images/icon/icon_fb_wh.png" quality={100} width={19} height={37} />
                 </a>
               </Link>
             </li>
             <li className={styles.globalNav__bottomMenu__snsItem}>
               <Link href="#">
                 <a className={styles.globalNav__bottomMenu__snsLink} target="_blank">
-                  <Image src='/images/icon/icon_tw_wh.png' quality={100} width={37} height={30} />
+                  <Image src="/images/icon/icon_tw_wh.png" quality={100} width={37} height={30} />
                 </a>
               </Link>
             </li>
           </ul>
         </div>
       </div>
-      <p className={styles.globalNav__spMenuButton} id="globalNav__spMenuButton"><span>&nbsp;</span></p>
+      <p className={styles.globalNav__spMenuButton} id="globalNav__spMenuButton">
+        <span>&nbsp;</span>
+      </p>
     </aside>
-  )
+  );
 }
 
-export default GlobalNav
+export default GlobalNav;
