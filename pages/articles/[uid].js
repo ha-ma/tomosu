@@ -16,7 +16,8 @@ const Article = ({ doc }) => {
     const hasContent = doc.data.content.length !== 0;
     const title = hasTitle ? RichText.asText(doc.data.title) : "Untitled";
     const content = hasContent ? RichText.render(doc.data.content, LinkResolver) : "";
-    content
+    console.log('tags', doc.tags)
+    console.log('doc.data.eyecatch.url', doc.data.eyecatch.url)
   return (
     <>
       <PageHero imagePath={doc.data.eyecatch.url}/>
@@ -32,12 +33,14 @@ const Article = ({ doc }) => {
                 <h1 className={styles.articlesdetail__heading__title}>{title}</h1>
                 <ul className={styles.articlesdetail__heading__hashList}>
                   {
-                    doc.data.tags.map((tag) => {
-                      <li className={styles.articlesdetail__heading__hashItem}>
-                        <Link href="/">
-                          <a className={styles.articlesdetail__heading__hashLink}>#ハッシュタグ</a>
-                        </Link>
-                      </li>
+                    doc.tags.map((tag) => {
+                      return (
+                        <li className={styles.articlesdetail__heading__hashItem}>
+                          <Link href="/">
+                            <a className={styles.articlesdetail__heading__hashLink}>{`#${tag}`}</a>
+                          </Link>
+                        </li>
+                      )
                     })
                   }
                 </ul>
@@ -94,7 +97,7 @@ const Article = ({ doc }) => {
           <div className={styles.articlesdetail__relatedLink}>
             <h2 className={styles.articlesdetail__relatedLink__heading}>関連リンク</h2>
             <div className={styles.articlesdetail__relatedLink__img}>
-              <Image src="/images/sample_link_image.png"/>
+              <Image src="/images/sample_link_image.png" quality={100} width={321} height={322} />
             </div>
             <p className={styles.articlesdetail__relatedLink__desc}>簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。</p>
             <Link href="#">
@@ -103,7 +106,7 @@ const Article = ({ doc }) => {
           </div>
           <div className={styles.articlesdetail__editor}>
             <div className={styles.articlesdetail__editor__img}>
-              <Image src="/images/sample_editor_image.png"/>
+              <Image src="/images/sample_editor_image.png" quality={100} width={321} height={322} />
             </div>
             <h2 className={styles.articlesdetail__editor__heading}>取材・編集／ tomosu編集部</h2>
             <p className={styles.articlesdetail__editor__desc}>簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。</p>
