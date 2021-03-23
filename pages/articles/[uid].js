@@ -28,12 +28,6 @@ const Article = ({ doc }) => {
     const editor_profile = hasEditorProfile ? RichText.render(doc.data.editor_profile, LinkResolver) : "";
     const interviewee_link = hasInterviweeLink ? doc.data.interviewee_link.url : "";
     const editor_link = hasEditorLink ? doc.data.editor_link.url : "";
-    console.log('tags', doc.tags)
-    console.log('hasEditorLink', hasEditorLink)
-    console.log('editor_link', editor_link)
-    console.log('hasInterviweeLink', hasInterviweeLink)
-    console.log('editor_link', editor_link)
-    console.log('doc.data.eyecatch.url', doc.data.eyecatch.url)
   return (
     <>
       <PageHero imagePath={doc.data.eyecatch.url}/>
