@@ -4,49 +4,55 @@ import styles from '../../styles/articles.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import PageHero from '../../components/PageHero'
-// import Prismic from '@prismicio/client'
-// import { Client } from "../../prismic-configuration";
-// import { queryRepeatableDocuments } from "../../util/queries";
+import { RichText, LinkResolver } from 'prismic-reactjs';
+import Prismic from '@prismicio/client'
+import { Client } from "../../prismic-configuration";
+import { queryRepeatableDocuments } from "../../util/queries";
 
-const Article = ({ article }) => {
-  // console.log('article', article);
-  // if (article && article.data) {
-  //   const hasTitle = RichText.asText(article.data.title).length !== 0;
-  //   const title = hasTitle ? RichText.asText(article.data.title) : "Untitled";
+const Article = ({ doc }) => {
+  console.log('doc', doc);
+  if (doc && doc.data) {
+    const hasTitle = doc.data.title.length !== 0;
+    const hasContent = doc.data.content.length !== 0;
+    const hasInterviweeName = doc.data.interviewee_name.length !== 0;
+    const hasEditorName = doc.data.editor_name.length !== 0;
+    const hasInterviweeProfile = doc.data.interviewee_profile.length !== 0;
+    const hasEditorProfile = doc.data.editor_profile.length !== 0;
+    const hasInterviweeLink = doc.data.interviewee_link.url.length !== 0;
+    const hasEditorLink = doc.data.editor_link.url.length !== 0;
+    const title = hasTitle ? RichText.asText(doc.data.title) : "Untitled";
+    const content = hasContent ? RichText.render(doc.data.content, LinkResolver) : "";
+    const interviewee_name = hasInterviweeName ? RichText.asText(doc.data.interviewee_name) : "Untitled";
+    const editor_name = hasEditorName ? RichText.render(doc.data.editor_name, LinkResolver) : "";
+    const interviewee_profile = hasInterviweeProfile ? RichText.asText(doc.data.interviewee_profile) : "Untitled";
+    const editor_profile = hasEditorProfile ? RichText.render(doc.data.editor_profile, LinkResolver) : "";
+    const interviewee_link = hasInterviweeLink ? doc.data.interviewee_link.url : "";
+    const editor_link = hasEditorLink ? doc.data.editor_link.url : "";
   return (
     <>
-      <PageHero />
+      <PageHero imagePath={doc.data.eyecatch.url}/>
       <section className={styles.articlesdetail}>
         <div className={styles.articlesdetail__container}>
           <div className={styles.articlesdetail__heading}>
             <div className={styles.articlesdetail__heading__top}>
-              <p className={styles.articlesdetail__heading__category}>セクション名</p>
+              <p className={styles.articlesdetail__heading__category}>{doc.data.categories}</p>
               <p className={styles.articlesdetail__heading__time}>2021.04.01</p>
             </div>
             <div className={styles.articlesdetail__heading__bottom}>
               <div className={styles.articlesdetail__heading__left}>
-                <h1 className={styles.articlesdetail__heading__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</h1>
+                <h1 className={styles.articlesdetail__heading__title}>{title}</h1>
                 <ul className={styles.articlesdetail__heading__hashList}>
-                  <li className={styles.articlesdetail__heading__hashItem}>
-                    <Link href="/">
-                      <a className={styles.articlesdetail__heading__hashLink}>#ハッシュタグ</a>
-                    </Link>
-                  </li>
-                  <li className={styles.articlesdetail__heading__hashItem}>
-                    <Link href="/">
-                      <a className={styles.articlesdetail__heading__hashLink}>#ハッシュタグ</a>
-                    </Link>
-                  </li>
-                  <li className={styles.articlesdetail__heading__hashItem}>
-                    <Link href="/">
-                      <a className={styles.articlesdetail__heading__hashLink}>#ハッシュタグ</a>
-                    </Link>
-                  </li>
-                  <li className={styles.articlesdetail__heading__hashItem}>
-                    <Link href="/">
-                      <a className={styles.articlesdetail__heading__hashLink}>#ハッシュタグ</a>
-                    </Link>
-                  </li>
+                  {
+                    doc.tags.map((tag) => {
+                      return (
+                        <li className={styles.articlesdetail__heading__hashItem}>
+                          <Link href="/">
+                            <a className={styles.articlesdetail__heading__hashLink}>{`#${tag}`}</a>
+                          </Link>
+                        </li>
+                      )
+                    })
+                  }
                 </ul>
                 <ul className={styles.articlesdetail__heading__icon}>
                   <li className={styles.articlesdetail__heading__iconItem}>
@@ -97,50 +103,22 @@ const Article = ({ article }) => {
               </ul>
             </div>
           </div>
-          <div className={styles.articlesdetail__content}>
-            <h2>見出しh2道東の環境を見て触れて伝えていきたい</h2>
-            <br /><br /><br />
-            <Image src="/images/sample_article_image.png" quality={100} width={1236} height={655} />
-            <br /><br /><br /><br /><br />
-            <h3>―道東SDGsの活動ついて教えてください。道東SDGsの活動ついて教えてください。道東SDGsの活動ついて教えてください。</h3>
-            <br /><br />
-            <p>本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。</p>
-            <br /><br /><br /><br /><br />
-            <h3>―道東SDGsの活動ついて教えてください。道東SDGsの活動ついて教えてください。道東SDGsの活動ついて教えてください。</h3>
-            <br /><br />
-            <p>本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。</p>
-            <br /><br /><br /><br /><br /><br /><br /><br />
-            <h2>見出しh2道東の環境を見て触れて伝えていきたい</h2>
-            <br /><br /><br />
-            <Image src="/images/sample_article_image.png" quality={100} width={1236} height={655} />
-            <br /><br /><br /><br /><br />
-            <h3>―道東SDGsの活動ついて教えてください。道東SDGsの活動ついて教えてください。道東SDGsの活動ついて教えてください。</h3>
-            <br /><br />
-            <p>本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。</p>
-            <br /><br /><br /><br /><br />
-            <h3>―道東SDGsの活動ついて教えてください。道東SDGsの活動ついて教えてください。道東SDGsの活動ついて教えてください。</h3>
-            <br /><br />
-            <p>本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。本文テキスト入ります。</p>
-          </div>
+          <div className={styles.articlesdetail__content}>{content}</div>
           <div className={styles.articlesdetail__relatedLink}>
-            <h2 className={styles.articlesdetail__relatedLink__heading}>関連リンク</h2>
+            <h2 className={styles.articlesdetail__relatedLink__heading}>{interviewee_name}</h2>
             <div className={styles.articlesdetail__relatedLink__img}>
-              <Image src="/images/sample_link_image.png" quality={100} width={321} height={322} />
+              <Image src={doc.data.interviewee_pic.url} quality={100} width={321} height={322} />
             </div>
-            <p className={styles.articlesdetail__relatedLink__desc}>簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。</p>
-            <Link href="#">
-              <a className={styles.articlesdetail__relatedLink__link} target="_blank">URL：http//tomosu.life</a>
-            </Link>
-          </div>
+            <p className={styles.articlesdetail__relatedLink__desc}>{interviewee_profile}</p>
+            <a href={interviewee_link} className={styles.articlesdetail__relatedLink__link} target="_blank">URL：{`${interviewee_link}`}</a>
+          </div>    
           <div className={styles.articlesdetail__editor}>
             <div className={styles.articlesdetail__editor__img}>
-              <Image src="/images/sample_editor_image.png" quality={100} width={321} height={322} />
+              <Image src={doc.data.editor_pic.url} quality={100} width={321} height={322} />
             </div>
-            <h2 className={styles.articlesdetail__editor__heading}>取材・編集／ tomosu編集部</h2>
-            <p className={styles.articlesdetail__editor__desc}>簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。簡単なプロフィールなど入ります。</p>
-            <Link href="#">
-              <a className={styles.articlesdetail__editor__link} target="_blank">URL：http//tomosu.life</a>
-            </Link>
+            <div className={styles.articlesdetail__editor__heading}>{editor_name}</div>
+            <p className={styles.articlesdetail__editor__desc}>{editor_profile}</p>
+            <a href={editor_link} className={styles.articlesdetail__editor__link} target="_blank">URL：{`${editor_link}`}</a>
           </div>
         </div>
         <div className={styles.articlesdetail__pickup}>
@@ -201,27 +179,27 @@ const Article = ({ article }) => {
       </section>
     </>
   )
-  // }
+  }
 };
 
-// export async function getStaticProps({ params }) {
-//   const client = Client();
-//   const doc = await client.getByUID("article", params.uid);
+export async function getStaticProps({ params }) {
+  const client = Client();
+  const doc = await client.getByUID("article", params.uid);
 
-//   return {
-//     props: {
-//       doc
-//     }
-//   };
-// }
+  return {
+    props: {
+      doc
+    }
+  };
+}
 
-// export async function getStaticPaths() {
-//   const documents = await queryRepeatableDocuments((doc) => doc.type === 'article')
-//   return {
-//     // You can run a separate query here to get dynamic parameters from your documents.
-//     paths: documents.map(doc => `/articles/${doc.uid}`),
-//     fallback: true
-//   };
-// }
+export async function getStaticPaths() {
+  const documents = await queryRepeatableDocuments((doc) => doc.type === 'article')
+  return {
+    // You can run a separate query here to get dynamic parameters from your documents.
+    paths: documents.map(doc => `/articles/${doc.uid}`),
+    fallback: true
+  };
+}
 
 export default Article;
