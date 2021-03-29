@@ -20,12 +20,8 @@ const Article = ({ doc }) => {
     const hasEditorProfile = doc.data.editor_profile.length !== 0;
     const hasIntervieweePic = 'url' in doc.data.interviewee_pic
     const hasEditorPic = 'url' in doc.data.editor_pic
-    console.log('hasIntervieweePic', hasIntervieweePic)
-    console.log('hasEditorPic', hasEditorPic)
     const hasInterviweeLink = 'url' in doc.data.interviewee_link
     const hasEditorLink = 'url' in doc.data.editor_link
-    console.log('hasIntervieweeLink', hasInterviweeLink)
-    console.log('hasEditorLink', hasEditorLink)
     const title = hasTitle ? RichText.asText(doc.data.title) : "Untitled";
     const content = hasContent ? RichText.render(doc.data.content, LinkResolver) : "";
     const interviewee_name = hasInterviweeName ? RichText.asText(doc.data.interviewee_name) : "Untitled";
@@ -34,7 +30,6 @@ const Article = ({ doc }) => {
     const editor_profile = hasEditorProfile ? RichText.render(doc.data.editor_profile, LinkResolver) : "";
     const interviewee_link = hasInterviweeLink ? doc.data.interviewee_link.url : "" ;
     const editor_link = hasEditorLink ? doc.data.editor_link.url : "" ;
-      console.log('doc.data.interviewee_pic.url', doc.data.interviewee_pic.url)
   return (
     <>
       <PageHero imagePath={doc.data.eyecatch.url}/>
@@ -115,8 +110,10 @@ const Article = ({ doc }) => {
             <h2 className={styles.articlesdetail__relatedLink__heading}>{interviewee_name}</h2>
             <div className={styles.articlesdetail__relatedLink__img}>
               {
-                hasIntervieweePic &&
+                hasIntervieweePic ?
                 <Image src={doc.data.interviewee_pic.url} quality={100} width={321} height={322} />
+                :
+                <Image src='/images/noimage.png' quality={100} width={321} height={322} />
               }
             </div>
             <p className={styles.articlesdetail__relatedLink__desc}>{interviewee_profile}</p>
@@ -128,8 +125,10 @@ const Article = ({ doc }) => {
           <div className={styles.articlesdetail__editor}>
             <div className={styles.articlesdetail__editor__img}>
               {
-                hasEditorPic &&
+                hasEditorPic ?
                 <Image src={doc.data.editor_pic.url} quality={100} width={321} height={322} />
+                :
+                <Image src='/images/noimage.png' quality={100} width={321} height={322} />
               }
             </div>
             <div className={styles.articlesdetail__editor__heading}>{editor_name}</div>
