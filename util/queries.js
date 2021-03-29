@@ -14,6 +14,7 @@ async function fetchDocs(page = 1, routes = []) {
 **/
 export const queryRepeatableDocuments = async (filter) => {
   const allRoutes = await fetchDocs()
+  console.log('allRoutes', allRoutes)
   return allRoutes.filter(filter)
 }
 
