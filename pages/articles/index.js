@@ -24,7 +24,7 @@ const Articles = ({ articles }) => {
                 <li key={article.id} className={styles.articleslist__item}>
                   <Link href={`/articles/${article.uid}`}>
                     <a className={styles.articleslist__link}>
-                      <div className={styles.articleslist__img}>{article.data.eyecatch.url ? <Image src={article.data.eyecatch.url} quality={100} width={600} height={400} /> : <Image src="/images/sample_article_image.png" quality={100} width={600} height={400} />}</div>
+                      <div className={styles.articleslist__img}>{article.data.eyecatch.url ? <Image src={article.data.eyecatch.url} quality={100} width={600} height={400} /> : <Image src="/images/noimage.png" quality={100} width={600} height={400} />}</div>
                       <ul className={styles.articleslist__category}>
                         <li className={styles.articleslist__category__item}>{article.data.categories}</li>
                       </ul>

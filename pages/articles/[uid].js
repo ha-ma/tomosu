@@ -18,16 +18,18 @@ const Article = ({ doc }) => {
     const hasEditorName = doc.data.editor_name.length !== 0;
     const hasInterviweeProfile = doc.data.interviewee_profile.length !== 0;
     const hasEditorProfile = doc.data.editor_profile.length !== 0;
-    const hasInterviweeLink = doc.data.interviewee_link.url.length !== 0;
-    const hasEditorLink = doc.data.editor_link.url.length !== 0;
+    const hasIntervieweePic = 'url' in doc.data.interviewee_pic
+    const hasEditorPic = 'url' in doc.data.editor_pic
+    const hasInterviweeLink = 'url' in doc.data.interviewee_link
+    const hasEditorLink = 'url' in doc.data.editor_link
     const title = hasTitle ? RichText.asText(doc.data.title) : "Untitled";
     const content = hasContent ? RichText.render(doc.data.content, LinkResolver) : "";
     const interviewee_name = hasInterviweeName ? RichText.asText(doc.data.interviewee_name) : "Untitled";
     const editor_name = hasEditorName ? RichText.render(doc.data.editor_name, LinkResolver) : "";
     const interviewee_profile = hasInterviweeProfile ? RichText.asText(doc.data.interviewee_profile) : "Untitled";
     const editor_profile = hasEditorProfile ? RichText.render(doc.data.editor_profile, LinkResolver) : "";
-    const interviewee_link = hasInterviweeLink ? doc.data.interviewee_link.url : "";
-    const editor_link = hasEditorLink ? doc.data.editor_link.url : "";
+    const interviewee_link = hasInterviweeLink ? doc.data.interviewee_link.url : "" ;
+    const editor_link = hasEditorLink ? doc.data.editor_link.url : "" ;
   return (
     <>
       <PageHero imagePath={doc.data.eyecatch.url}/>
@@ -107,18 +109,34 @@ const Article = ({ doc }) => {
           <div className={styles.articlesdetail__relatedLink}>
             <h2 className={styles.articlesdetail__relatedLink__heading}>{interviewee_name}</h2>
             <div className={styles.articlesdetail__relatedLink__img}>
-              <Image src={doc.data.interviewee_pic.url} quality={100} width={321} height={322} />
+              {
+                hasIntervieweePic ?
+                <Image src={doc.data.interviewee_pic.url} quality={100} width={321} height={322} />
+                :
+                <Image src='/images/noimage.png' quality={100} width={321} height={322} />
+              }
             </div>
             <p className={styles.articlesdetail__relatedLink__desc}>{interviewee_profile}</p>
-            <a href={interviewee_link} className={styles.articlesdetail__relatedLink__link} target="_blank">URL：{`${interviewee_link}`}</a>
+            {
+              hasInterviweeLink &&
+              <a href={interviewee_link} className={styles.articlesdetail__relatedLink__link} target="_blank">URL：{`${interviewee_link}`}</a>
+            }
           </div>    
           <div className={styles.articlesdetail__editor}>
             <div className={styles.articlesdetail__editor__img}>
-              <Image src={doc.data.editor_pic.url} quality={100} width={321} height={322} />
+              {
+                hasEditorPic ?
+                <Image src={doc.data.editor_pic.url} quality={100} width={321} height={322} />
+                :
+                <Image src='/images/noimage.png' quality={100} width={321} height={322} />
+              }
             </div>
             <div className={styles.articlesdetail__editor__heading}>{editor_name}</div>
             <p className={styles.articlesdetail__editor__desc}>{editor_profile}</p>
-            <a href={editor_link} className={styles.articlesdetail__editor__link} target="_blank">URL：{`${editor_link}`}</a>
+            {
+              hasEditorLink &&
+              <a href={editor_link} className={styles.articlesdetail__editor__link} target="_blank">URL：{`${editor_link}`}</a>
+            }
           </div>
         </div>
         <div className={styles.articlesdetail__pickup}>
