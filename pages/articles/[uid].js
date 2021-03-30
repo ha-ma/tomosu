@@ -1,5 +1,5 @@
 //pages/[uid].js
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from '../../styles/articles.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,8 +9,25 @@ import Prismic from '@prismicio/client'
 import { Client } from "../../prismic-configuration";
 import { queryRepeatableDocuments } from "../../util/queries";
 
-const Article = ({ doc }) => {
-  console.log('doc', doc);
+const Article = ({ doc, articles }) => {
+    const [pickUpArticles, setPicUpArticles] = useState([]);
+    const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        const client = Client();
+        const articles = await client.query(Prismic.predicates.at("document.type", "article"),{
+          orderings : '[document.last_publication_date desc]',
+          pageSize: 2
+        })
+        if (articles) {
+          const pickUpArticleResults = articles.results
+          setPicUpArticles(pickUpArticleResults)
+        }
+      };
+      fetchData();
+    }, []);
+
   if (doc && doc.data) {
     const dt = new Date(doc.first_publication_date)
     const year = dt.getFullYear()
@@ -29,10 +46,10 @@ const Article = ({ doc }) => {
     const hasEditorLink = 'url' in doc.data.editor_link
     const title = hasTitle ? RichText.asText(doc.data.title) : "Untitled";
     const content = hasContent ? RichText.render(doc.data.content, LinkResolver) : "";
-    const interviewee_name = hasInterviweeName ? RichText.asText(doc.data.interviewee_name) : "Untitled";
-    const editor_name = hasEditorName ? RichText.render(doc.data.editor_name, LinkResolver) : "";
-    const interviewee_profile = hasInterviweeProfile ? RichText.asText(doc.data.interviewee_profile) : "Untitled";
-    const editor_profile = hasEditorProfile ? RichText.render(doc.data.editor_profile, LinkResolver) : "";
+    const interviewee_name = hasInterviweeName ? RichText.asText(doc.data.interviewee_name) : "NoName";
+    const editor_name = hasEditorName ? RichText.render(doc.data.editor_name, LinkResolver) : "NoName";
+    const interviewee_profile = hasInterviweeProfile ? RichText.asText(doc.data.interviewee_profile) : "NoContent";
+    const editor_profile = hasEditorProfile ? RichText.render(doc.data.editor_profile, LinkResolver) : "NoContent";
     const interviewee_link = hasInterviweeLink ? doc.data.interviewee_link.url : "" ;
     const editor_link = hasEditorLink ? doc.data.editor_link.url : "" ;
   return (
@@ -151,48 +168,39 @@ const Article = ({ doc }) => {
           </div>
           <div className={styles.articlesdetail__pickup__listBlock}>
             <ul className={styles.articlesdetail__pickup__list}>
-              <li className={styles.articlesdetail__pickup__item}>
-                <Link href="/articles/">
-                  <a className={styles.articlesdetail__pickup__link}>
-                    <div className={styles.articlesdetail__pickup__img}>
-                      <Image src="/images/sample_article_image.png" quality={100} width={600} height={400} />
-                    </div>
-                    <ul className={styles.articlesdetail__pickup__category}>
-                      <li className={styles.articlesdetail__pickup__category__item}>セクション名</li>
-                    </ul>
-                    <h3 className={styles.articlesdetail__pickup__item__heading}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</h3>
-                  </a>
-                </Link>
-                <ul className={styles.articlesdetail__pickup__tag}>
-                  <li className={styles.articlesdetail__pickup__tag__item}>
-                    <Link href="/"><a className={styles.articlesdetail__pickup__tag__link}>#ハッシュタグ</a></Link>
-                  </li>
-                  <li className={styles.articlesdetail__pickup__tag__item}>
-                    <Link href="/"><a className={styles.articlesdetail__pickup__tag__link}>#ハッシュタグ</a></Link>
-                  </li>
-                </ul>
-              </li>
-              <li className={styles.articlesdetail__pickup__item}>
-                <Link href="/articles/">
-                  <a className={styles.articlesdetail__pickup__link}>
-                    <div className={styles.articlesdetail__pickup__img}>
-                      <Image src="/images/sample_article_image.png" quality={100} width={600} height={400} />
-                    </div>
-                    <ul className={styles.articlesdetail__pickup__category}>
-                      <li className={styles.articlesdetail__pickup__category__item}>セクション名</li>
-                    </ul>
-                    <h3 className={styles.articlesdetail__pickup__item__heading}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</h3>
-                  </a>
-                </Link>
-                <ul className={styles.articlesdetail__pickup__tag}>
-                  <li className={styles.articlesdetail__pickup__tag__item}>
-                    <Link href="/"><a className={styles.articlesdetail__pickup__tag__link}>#ハッシュタグ</a></Link>
-                  </li>
-                  <li className={styles.articlesdetail__pickup__tag__item}>
-                    <Link href="/"><a className={styles.articlesdetail__pickup__tag__link}>#ハッシュタグ</a></Link>
-                  </li>
-                </ul>
-              </li>
+              {
+                pickUpArticles.map(article => {
+                    const uid = article.uid
+                    const title = article.data.title[0].text
+                    const category = article.data.categories
+                    const tags = article.tags
+                    const eyecatch = article.data.eyecatch.url
+                  return (
+                    <li className={styles.articlesdetail__pickup__item}>
+                      <Link href={`/articles/${uid}`}>
+                        <a className={styles.articlesdetail__pickup__link}>
+                          <div className={styles.articlesdetail__pickup__img}>
+                            <Image src={eyecatch ? eyecatch : '/images/noimage.png'} quality={100} width={600} height={400} />
+                          </div>
+                          <ul className={styles.articlesdetail__pickup__category}>
+                            <li className={styles.articlesdetail__pickup__category__item}>{category}</li>
+                          </ul>
+                          <h3 className={styles.articlesdetail__pickup__item__heading}>{title}</h3>
+                        </a>
+                      </Link>
+                      <ul className={styles.articlesdetail__pickup__tag}>
+                        {
+                          tags.map(tag =>
+                            <li className={styles.articlesdetail__pickup__tag__item}>
+                              <Link href={{ pathname: '/articles', query: { tag: tag } }}><a className={styles.articlesdetail__pickup__tag__link}>#{`${tag}`}</a></Link>
+                            </li>
+                          )
+                        }
+                      </ul>
+                    </li>
+                  )
+                })
+              }
             </ul>
             <div className={styles.articlesdetail__pickup__backLink}>
               <Link href="/articles"><a>記事一覧へ</a></Link>
@@ -224,5 +232,18 @@ export async function getStaticPaths() {
     fallback: true
   };
 }
+
+// export async function getServerSideProps(context) {
+//   const client = Client()
+//   const articles = await client.query(Prismic.predicates.at("document.type", "article"),{
+//     orderings : '[document.last_publication_date desc]',
+//     pageSize: 2
+//   })
+//   return {
+//     props: {
+//       articles: articles ? articles.results.sort() : []
+//     }
+//   };
+// }
 
 export default Article;
