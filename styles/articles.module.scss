@@ -539,7 +539,7 @@
   }
   &__relatedLink {
     margin-bottom: 99px;
-    padding: 65px 60px;
+    padding: 75px 60px;
     border-top: 1px solid #707070;
     border-bottom: 1px solid #707070;
     box-sizing: border-box;
@@ -572,8 +572,6 @@
         display: block!important;
         img {
           width: 100%!important;
-          height: 320px!important;
-          min-height: auto!important;
           object-fit: cover;
           border-radius: 50%;
         }
@@ -599,7 +597,7 @@
     }
   }
   &__editor {
-    padding: 56px 64px;
+    padding: 77px 64px;
     box-sizing: border-box;
     background-color: #F8F8F8;
     position: relative;
@@ -624,6 +622,7 @@
       transform: translateY(-50%);
       @media (max-width: 1279px) {
         width: 140px;
+        height: 140px;
         margin: 0 auto 28px;
         position: static;
         transform: translateY(0);
@@ -632,10 +631,8 @@
         display: block!important;
         img {
           width: 100%!important;
-          height: 320px!important;
-          min-height: auto!important;
           object-fit: cover;
-        border-radius: 50%;
+          border-radius: 50%;
         }
       }
     }
