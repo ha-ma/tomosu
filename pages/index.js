@@ -11,9 +11,6 @@ import Prismic from "@prismicio/client";
 import { Client } from "../prismic-configuration";
 
 export default function Home({slider, articles, news_list}) {
-  console.log('slider',slider)
-  console.log('articles', articles)
-  console.log('news_list', news_list)
   const settings = {
     dots: true,
     infinite: true,
@@ -40,7 +37,7 @@ export default function Home({slider, articles, news_list}) {
                 const eyecatch = item.data.eyecatch.url
                 console.log('eyecatch', eyecatch)
                 return (
-                  <div className={styles.home__slide__item}>
+                  <div className={styles.home__slide__item} key={uid}>
                     <Link href={`articles/${uid}`}>
                       <a className={styles.home__slide__link}>
                         <div className={styles.home__slide__img} style={{backgroundImage: eyecatch ? `url(${eyecatch})` : 'url(/images/noimage.png)'}}></div>
@@ -76,7 +73,7 @@ export default function Home({slider, articles, news_list}) {
                   const tags = item.tags
                   const eyecatch = item.data.eyecatch.url
                   return (
-                    <li className={styles.home__articles__item}>
+                    <li className={styles.home__articles__item} key={uid}>
                       <Link href={`articles/${uid}`}>
                         <a className={styles.home__articles__link}>
                           <InViewMonitor
@@ -106,7 +103,7 @@ export default function Home({slider, articles, news_list}) {
                         <ul className={styles.home__articles__tag}>
                           {
                             tags.map(tag =>
-                              <li className={styles.home__articles__tag__item}>
+                              <li className={styles.home__articles__tag__item} key={tag}>
                                 <Link href={{ pathname: '/articles', query: { tag: tag } }}><a className={styles.home__articles__tag__link}>#{`${tag}`}</a></Link>
                               </li>
                             )
@@ -229,7 +226,7 @@ export default function Home({slider, articles, news_list}) {
                   const ymd = `${y}.${m}.${d}`
                   const title = news.data.title[0].text
                   return (
-                    <li className={styles.home__news__item}>
+                    <li className={styles.home__news__item} key={news.uid}>
                       <InViewMonitor
                         classNameNotInView={styles.visHidden}
                         classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
@@ -273,8 +270,6 @@ export async function getServerSideProps(context) {
     orderings : '[document.last_publication_date desc]',
     pageSize: 4
   })
-  console.log('articles', articles)
-  console.log('news_list', news_list)
   return {
     props: {
       slider: slider ? slider.results : [],
