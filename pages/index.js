@@ -7,8 +7,13 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import InViewMonitor from "react-inview-monitor"
 import 'animate.css/animate.css'
+import Prismic from "@prismicio/client";
+import { Client } from "../prismic-configuration";
 
-export default function Home() {
+export default function Home({slider, articles, news_list}) {
+  console.log('slider',slider)
+  console.log('articles', articles)
+  console.log('news_list', news_list)
   const settings = {
     dots: true,
     infinite: true,
@@ -27,39 +32,28 @@ export default function Home() {
         {/* slide */}
         <div className={styles.home__slide}>
           <Slide {...settings}>
-            <div className={styles.home__slide__item}>
-              <Link href="articles/">
-                <a className={styles.home__slide__link}>
-                  <div className={styles.home__slide__img} style={{backgroundImage: 'url(/images/hero/top.png)'}}></div>
-                  <div className={styles.home__slide__heading}>
-                    <p className={styles.home__slide__category}>セクション名</p>
-                    <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
+            {
+              slider.map(item => {
+                const uid = item.uid
+                const title = item.data.title[0].text
+                const category = item.data.categories
+                const eyecatch = item.data.eyecatch.url
+                console.log('eyecatch', eyecatch)
+                return (
+                  <div className={styles.home__slide__item}>
+                    <Link href={`articles/${uid}`}>
+                      <a className={styles.home__slide__link}>
+                        <div className={styles.home__slide__img} style={{backgroundImage: eyecatch ? `url(${eyecatch})` : 'url(/images/noimage.png)'}}></div>
+                        <div className={styles.home__slide__heading}>
+                          <p className={styles.home__slide__category}>{category}</p>
+                          <p className={styles.home__slide__title}>{title}</p>
+                        </div>
+                      </a>
+                    </Link>
                   </div>
-                </a>
-              </Link>
-            </div>
-            <div className={styles.home__slide__item}>
-              <Link href="articles/">
-                <a className={styles.home__slide__link}>
-                  <div className={styles.home__slide__img} style={{backgroundImage: 'url(/images/hero/top.png)'}}></div>
-                  <div className={styles.home__slide__heading}>
-                    <p className={styles.home__slide__category}>セクション名</p>
-                    <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
-                  </div>
-                </a>
-              </Link>
-            </div>
-            <div className={styles.home__slide__item}>
-              <Link href="articles/">
-                <a className={styles.home__slide__link}>
-                  <div className={styles.home__slide__img} style={{backgroundImage: 'url(/images/hero/top.png)'}}></div>
-                  <div className={styles.home__slide__heading}>
-                    <p className={styles.home__slide__category}>セクション名</p>
-                    <p className={styles.home__slide__title}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</p>
-                  </div>
-                </a>
-              </Link>
-            </div>
+                )
+              })
+            }
           </Slide>
         </div>
         {/* Magazine */}
@@ -74,154 +68,55 @@ export default function Home() {
           </InViewMonitor>
           <div className={styles.home__articles__listBlock}>
             <ul className={styles.home__articles__list}>
-              <li className={styles.home__articles__item}>
-                <Link href="/article">
-                  <a className={styles.home__articles__link}>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <div className={styles.home__articles__img}>
-                        <Image src="/images/sample_article_image.png" quality={100} width={600} height={400} />
-                      </div>
-                    </InViewMonitor>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <ul className={styles.home__articles__category}>
-                        <li className={styles.home__articles__category__item}>セクション名</li>
-                      </ul>
-                    </InViewMonitor>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <h3 className={styles.home__articles__heading}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</h3>
-                    </InViewMonitor>
-                  </a>
-                </Link>
-                <InViewMonitor
-                  classNameNotInView={styles.visHidden}
-                  classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                  <ul className={styles.home__articles__tag}>
-                    <li className={styles.home__articles__tag__item}>
-                      <Link href="/"><a className={styles.home__articles__tag__link}>#ハッシュタグ</a></Link>
+              {
+                articles.map(item => {
+                  const uid = item.uid
+                  const title = item.data.title[0].text
+                  const category = item.data.categories
+                  const tags = item.tags
+                  const eyecatch = item.data.eyecatch.url
+                  return (
+                    <li className={styles.home__articles__item}>
+                      <Link href={`articles/${uid}`}>
+                        <a className={styles.home__articles__link}>
+                          <InViewMonitor
+                            classNameNotInView={styles.visHidden}
+                            classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
+                            <div className={styles.home__articles__img}>
+                              <Image src={eyecatch ? eyecatch : "/images/noimage.png"} quality={100} width={600} height={400} />
+                            </div>
+                          </InViewMonitor>
+                          <InViewMonitor
+                            classNameNotInView={styles.visHidden}
+                            classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
+                            <ul className={styles.home__articles__category}>
+                              <li className={styles.home__articles__category__item}>{category}</li>
+                            </ul>
+                          </InViewMonitor>
+                          <InViewMonitor
+                            classNameNotInView={styles.visHidden}
+                            classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
+                            <h3 className={styles.home__articles__heading}>{title}</h3>
+                          </InViewMonitor>
+                        </a>
+                      </Link>
+                      <InViewMonitor
+                        classNameNotInView={styles.visHidden}
+                        classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
+                        <ul className={styles.home__articles__tag}>
+                          {
+                            tags.map(tag =>
+                              <li className={styles.home__articles__tag__item}>
+                                <Link href={{ pathname: '/articles', query: { tag: tag } }}><a className={styles.home__articles__tag__link}>#{`${tag}`}</a></Link>
+                              </li>
+                            )
+                          }
+                        </ul>
+                      </InViewMonitor>
                     </li>
-                    <li className={styles.home__articles__tag__item}>
-                      <Link href="/"><a className={styles.home__articles__tag__link}>#ハッシュタグ</a></Link>
-                    </li>
-                  </ul>
-                </InViewMonitor>
-              </li>
-              <li className={styles.home__articles__item}>
-                <Link href="/article">
-                  <a className={styles.home__articles__link}>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <div className={styles.home__articles__img}>
-                        <Image src="/images/sample_article_image.png" quality={100} width={600} height={400} />
-                      </div>
-                    </InViewMonitor>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <ul className={styles.home__articles__category}>
-                        <li className={styles.home__articles__category__item}>セクション名</li>
-                      </ul>
-                    </InViewMonitor>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <h3 className={styles.home__articles__heading}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</h3>
-                    </InViewMonitor>
-                  </a>
-                </Link>
-                <InViewMonitor
-                  classNameNotInView={styles.visHidden}
-                  classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                  <ul className={styles.home__articles__tag}>
-                    <li className={styles.home__articles__tag__item}>
-                      <Link href="/"><a className={styles.home__articles__tag__link}>#ハッシュタグ</a></Link>
-                    </li>
-                    <li className={styles.home__articles__tag__item}>
-                      <Link href="/"><a className={styles.home__articles__tag__link}>#ハッシュタグ</a></Link>
-                    </li>
-                  </ul>
-                </InViewMonitor>
-              </li>
-              <li className={styles.home__articles__item}>
-                <Link href="/article">
-                  <a className={styles.home__articles__link}>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <div className={styles.home__articles__img}>
-                        <Image src="/images/sample_article_image.png" quality={100} width={600} height={400} />
-                      </div>
-                    </InViewMonitor>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <ul className={styles.home__articles__category}>
-                        <li className={styles.home__articles__category__item}>セクション名</li>
-                      </ul>
-                    </InViewMonitor>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <h3 className={styles.home__articles__heading}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</h3>
-                    </InViewMonitor>
-                  </a>
-                </Link>
-                <InViewMonitor
-                  classNameNotInView={styles.visHidden}
-                  classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                  <ul className={styles.home__articles__tag}>
-                    <li className={styles.home__articles__tag__item}>
-                      <Link href="/"><a className={styles.home__articles__tag__link}>#ハッシュタグ</a></Link>
-                    </li>
-                    <li className={styles.home__articles__tag__item}>
-                      <Link href="/"><a className={styles.home__articles__tag__link}>#ハッシュタグ</a></Link>
-                    </li>
-                  </ul>
-                </InViewMonitor>
-              </li>
-              <li className={styles.home__articles__item}>
-                <Link href="/article">
-                  <a className={styles.home__articles__link}>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <div className={styles.home__articles__img}>
-                        <Image src="/images/sample_article_image.png" quality={100} width={600} height={400} />
-                      </div>
-                    </InViewMonitor>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <ul className={styles.home__articles__category}>
-                        <li className={styles.home__articles__category__item}>セクション名</li>
-                      </ul>
-                    </InViewMonitor>
-                    <InViewMonitor
-                      classNameNotInView={styles.visHidden}
-                      classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                      <h3 className={styles.home__articles__heading}>タイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入りますタイトルが入ります</h3>
-                    </InViewMonitor>
-                  </a>
-                </Link>
-                <InViewMonitor
-                  classNameNotInView={styles.visHidden}
-                  classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                  <ul className={styles.home__articles__tag}>
-                    <li className={styles.home__articles__tag__item}>
-                      <Link href="/"><a className={styles.home__articles__tag__link}>#ハッシュタグ</a></Link>
-                    </li>
-                    <li className={styles.home__articles__tag__item}>
-                      <Link href="/"><a className={styles.home__articles__tag__link}>#ハッシュタグ</a></Link>
-                    </li>
-                  </ul>
-                </InViewMonitor>
-              </li>
+                  )
+                })
+              }
             </ul>
             <InViewMonitor
               classNameNotInView={styles.visHidden}
@@ -325,48 +220,32 @@ export default function Home() {
               <Link href="/news"><a className={[styles.home__news__listLink, styles.home__news__listLink__pc].join(' ')}>〉お知らせ一覧へ</a></Link>
             </InViewMonitor>
             <ul className={styles.home__news__list}>
-              <li className={styles.home__news__item}>
-                <InViewMonitor
-                  classNameNotInView={styles.visHidden}
-                  classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                  <Link href="/news">
-                    <a className={styles.home__news__link}>
-                      <dl>
-                        <dt>2021.04.01</dt>
-                        <dd>webサイトを公開しました。webサイトを公開しました。webサイトを公開しました。webサイトを公開しました。</dd>
-                      </dl>
-                    </a>
-                  </Link>
-                </InViewMonitor>
-              </li>
-              <li className={styles.home__news__item}>
-                <InViewMonitor
-                  classNameNotInView={styles.visHidden}
-                  classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                  <Link href="/news">
-                    <a className={styles.home__news__link}>
-                      <dl>
-                        <dt>2021.04.01</dt>
-                        <dd>webサイトを公開しました。webサイトを公開しました。webサイトを公開しました。webサイトを公開しました。</dd>
-                      </dl>
-                    </a>
-                  </Link>
-                </InViewMonitor>
-              </li>
-              <li className={styles.home__news__item}>
-                <InViewMonitor
-                  classNameNotInView={styles.visHidden}
-                  classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
-                  <Link href="/news">
-                    <a className={styles.home__news__link}>
-                      <dl>
-                        <dt>2021.04.01</dt>
-                        <dd>webサイトを公開しました。webサイトを公開しました。webサイトを公開しました。webサイトを公開しました。</dd>
-                      </dl>
-                    </a>
-                  </Link>
-                </InViewMonitor>
-              </li>
+              {
+                news_list.map(news => {
+                  const date = new Date(news.last_publication_date)
+                  const y = date.getFullYear()
+                  const m = ('00' + (date.getMonth() + 1)).slice(-2)
+                  const d = ('00' + date.getDate()).slice(-2)
+                  const ymd = `${y}.${m}.${d}`
+                  const title = news.data.title[0].text
+                  return (
+                    <li className={styles.home__news__item}>
+                      <InViewMonitor
+                        classNameNotInView={styles.visHidden}
+                        classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(' ')}>
+                        <Link href="/news">
+                          <a className={styles.home__news__link}>
+                            <dl>
+                              <dt>{ymd}</dt>
+                              <dd>{title}</dd>
+                            </dl>
+                          </a>
+                        </Link>
+                      </InViewMonitor>
+                    </li>
+                  )
+                })
+              }
             </ul>
             <InViewMonitor
               classNameNotInView={styles.visHidden}
@@ -378,4 +257,29 @@ export default function Home() {
       </div>
     </section>
   );
+}
+
+export async function getServerSideProps(context) {
+  const client = Client()
+  const slider = await client.query(Prismic.predicates.at("document.type", "article"),{
+    orderings : '[document.last_publication_date desc]',
+    pageSize: 3
+  })
+  const articles = await client.query(Prismic.predicates.at("document.type", "article"),{
+    orderings : '[document.last_publication_date desc]',
+    pageSize: 4
+  })
+  const news_list = await client.query(Prismic.Predicates.at("document.type", "news"),{
+    orderings : '[document.last_publication_date desc]',
+    pageSize: 4
+  })
+  console.log('articles', articles)
+  console.log('news_list', news_list)
+  return {
+    props: {
+      slider: slider ? slider.results : [],
+      news_list: news_list ? news_list.results : [],
+      articles: articles ? articles.results.sort() : []
+    }
+  };
 }
