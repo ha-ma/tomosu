@@ -460,13 +460,19 @@
       box-sizing: border-box;
       @media (max-width: 1599px) {
         font-size: 20px;
+        min-height: 44px;
       }
       @media (max-width: 1439px) {
         font-size: 16px;
+        min-height: 35px;
       }
       @media (max-width: 1279px) {
         font-size: 14px;
-        padding-right: 0;
+        min-height: 30px;
+      }
+      img {
+        width: 100%!important;
+        height: auto!important;
       }
     }
     div {

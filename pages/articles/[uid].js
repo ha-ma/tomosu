@@ -12,6 +12,11 @@ import { queryRepeatableDocuments } from "../../util/queries";
 const Article = ({ doc }) => {
   console.log('doc', doc);
   if (doc && doc.data) {
+    const dt = new Date(doc.first_publication_date)
+    const year = dt.getFullYear()
+    const month = ('00' + (dt.getMonth() + 1)).slice(-2)
+    const date = ('00' + dt.getDate()).slice(-2)
+    const publishDate = `${year}.${month}.${date}`
     const hasTitle = doc.data.title.length !== 0;
     const hasContent = doc.data.content.length !== 0;
     const hasInterviweeName = doc.data.interviewee_name.length !== 0;
@@ -38,7 +43,7 @@ const Article = ({ doc }) => {
           <div className={styles.articlesdetail__heading}>
             <div className={styles.articlesdetail__heading__top}>
               <p className={styles.articlesdetail__heading__category}>{doc.data.categories}</p>
-              <p className={styles.articlesdetail__heading__time}>2021.04.01</p>
+              <p className={styles.articlesdetail__heading__time}>{publishDate}</p>
             </div>
             <div className={styles.articlesdetail__heading__bottom}>
               <div className={styles.articlesdetail__heading__left}>
