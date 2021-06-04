@@ -180,36 +180,13 @@ export default function Home({ slider, articles, news_list }) {
 
         {/* What We Do */}
         {/* <div className={styles.home__about}>
-          <InViewMonitor
-            classNameNotInView={styles.visHidden}
-            classNameInView={[
-              "animate__animated animate__fadeInUp",
-              styles.fadeInUp,
-            ].join(" ")}
-          >
-            <div
-              className={[styles.home__heading, styles.aboutHeading].join(" ")}
-            >
-              <h2
-                className={[
-                  styles.home__heading__en,
-                  styles.aboutHeading__en,
-                ].join(" ")}
-              >
-                What We Do
-              </h2>
-              <p className={styles.home__heading__desc}>
-                わたしたちと、皆さんと一緒にできること。
-              </p>
+          <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
+            <div className={[styles.home__heading, styles.aboutHeading].join(" ")}>
+              <h2 className={[styles.home__heading__en, styles.aboutHeading__en].join(" ")}>What We Do</h2>
+              <p className={styles.home__heading__desc}>わたしたちと、皆さんと一緒にできること。</p>
             </div>
           </InViewMonitor>
-          <InViewMonitor
-            classNameNotInView={styles.visHidden}
-            classNameInView={[
-              "animate__animated animate__fadeInUp",
-              styles.fadeInUp,
-            ].join(" ")}
-          >
+          <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
             <div className={styles.home__about__img}>
               <Image
                 src="/images/top/top_about.png"
@@ -220,35 +197,13 @@ export default function Home({ slider, articles, news_list }) {
             </div>
           </InViewMonitor>
           <div className={styles.home__about__detail}>
-            <InViewMonitor
-              classNameNotInView={styles.visHidden}
-              classNameInView={[
-                "animate__animated animate__fadeInUp",
-                styles.fadeInUp,
-              ].join(" ")}
-            >
-              <h3 className={styles.home__about__detail__heading}>
-                私たちのこと
-              </h3>
+            <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
+              <h3 className={styles.home__about__detail__heading}>私たちのこと</h3>
             </InViewMonitor>
-            <InViewMonitor
-              classNameNotInView={styles.visHidden}
-              classNameInView={[
-                "animate__animated animate__fadeInUp",
-                styles.fadeInUp,
-              ].join(" ")}
-            >
-              <p className={styles.home__about__detail__desc}>
-                tomosuは道東SDGs協議会が運営するオンラインマガジンです。私たちは道東エリアの取材発信のほかワークショップや講演などの取り組みにも力をいれています。
-              </p>
+            <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
+              <p className={styles.home__about__detail__desc}>tomosuは道東SDGs協議会が運営するオンラインマガジンです。私たちは道東エリアの取材発信のほかワークショップや講演などの取り組みにも力をいれています。</p>
             </InViewMonitor>
-            <InViewMonitor
-              classNameNotInView={styles.visHidden}
-              classNameInView={[
-                "animate__animated animate__fadeInUp",
-                styles.fadeInUp,
-              ].join(" ")}
-            >
+            <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
               <Link href="/about">
                 <a className={styles.home__about__detail__link}>詳しく見る</a>
               </Link>
@@ -258,29 +213,15 @@ export default function Home({ slider, articles, news_list }) {
 
         {/* About SDGs */}
         {/* <div className={styles.home__sdgs}>
-          <InViewMonitor
-            classNameNotInView={styles.visHidden}
-            classNameInView={[
-              "animate__animated animate__fadeInUp",
-              styles.fadeInUp,
-            ].join(" ")}
-          >
-            <div
-              className={[styles.home__heading, styles.sdgsHeading].join(" ")}
-            >
+          <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
+            <div className={[styles.home__heading, styles.sdgsHeading].join(" ")}>
               <h2 className={styles.home__heading__en}>About SDGs</h2>
               <p className={styles.home__heading__desc}>
                 身近なことからアクションを起こそう！
               </p>
             </div>
           </InViewMonitor>
-          <InViewMonitor
-            classNameNotInView={styles.visHidden}
-            classNameInView={[
-              "animate__animated animate__fadeInUp",
-              styles.fadeInUp,
-            ].join(" ")}
-          >
+          <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
             <div className={styles.home__sdgs__img}>
               <Image
                 src="/images/top/top_sdgs.png"
@@ -291,35 +232,13 @@ export default function Home({ slider, articles, news_list }) {
             </div>
           </InViewMonitor>
           <div className={styles.home__sdgs__detail}>
-            <InViewMonitor
-              classNameNotInView={styles.visHidden}
-              classNameInView={[
-                "animate__animated animate__fadeInUp",
-                styles.fadeInUp,
-              ].join(" ")}
-            >
-              <h3 className={styles.home__sdgs__detail__heading}>
-                SDGsについて
-              </h3>
+            <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
+              <h3 className={styles.home__sdgs__detail__heading}>SDGsについて</h3>
             </InViewMonitor>
-            <InViewMonitor
-              classNameNotInView={styles.visHidden}
-              classNameInView={[
-                "animate__animated animate__fadeInUp",
-                styles.fadeInUp,
-              ].join(" ")}
-            >
-              <p className={styles.home__sdgs__detail__desc}>
-                SDGsって最近よく耳にするけど一体なんだろう。どういうことをすればいいの？そんな疑問をわかりやすく解説しています。一緒に身近なことから始めませんか？
-              </p>
+            <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
+              <p className={styles.home__sdgs__detail__desc}>SDGsって最近よく耳にするけど一体なんだろう。どういうことをすればいいの？そんな疑問をわかりやすく解説しています。一緒に身近なことから始めませんか？</p>
             </InViewMonitor>
-            <InViewMonitor
-              classNameNotInView={styles.visHidden}
-              classNameInView={[
-                "animate__animated animate__fadeInUp",
-                styles.fadeInUp,
-              ].join(" ")}
-            >
+            <InViewMonitor classNameNotInView={styles.visHidden} classNameInView={["animate__animated animate__fadeInUp", styles.fadeInUp].join(" ")}>
               <Link href="/sdgs">
                 <a className={styles.home__sdgs__detail__link}>詳しく見る</a>
               </Link>

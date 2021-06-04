@@ -12,7 +12,10 @@ import {
   sdgsDisplayGenerator,
   sdgsIconSwitch,
 } from "../../components/sdgsDisplayGenerator";
-const Article = ({ doc, articles }) => {
+import { useRouter } from "next/router";
+
+const Article = ({ doc }) => {
+  console.log("docdocdoc", doc);
   const [pickUpArticles, setPicUpArticles] = useState([]);
   const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
 
@@ -33,8 +36,11 @@ const Article = ({ doc, articles }) => {
     };
     fetchData();
   }, []);
-  console.log(doc);
-  console.log(doc.data);
+
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   if (doc && doc.data) {
     const dt = new Date(doc.first_publication_date);
@@ -74,7 +80,6 @@ const Article = ({ doc, articles }) => {
       : "";
     const editor_link = hasEditorLink ? doc.data.editor_link.url : "";
     const SDGsGoals = hasGroup ? sdgsDisplayGenerator(doc.data.group[0]) : [];
-    console.log(SDGsGoals);
 
     return (
       <>
@@ -112,6 +117,7 @@ const Article = ({ doc, articles }) => {
                       );
                     })}
                   </ul>
+                  {/* SDGs Goals */}
                   <ul className={styles.articlesdetail__heading__icon}>
                     {SDGsGoals &&
                       SDGsGoals.map((value) => {
@@ -136,7 +142,8 @@ const Article = ({ doc, articles }) => {
                 </div>
                 <ul className={styles.articlesdetail__heading__snsList}>
                   <li className={styles.articlesdetail__heading__snsItem}>
-                    <Link href="/">
+                    {/* FacebookIcon */}
+                    <Link href="https://www.facebook.com/tomosu.life">
                       <a className={styles.articlesdetail__heading__snsLink}>
                         <div className={styles.articlesdetail__heading__snsImg}>
                           <Image
@@ -149,7 +156,8 @@ const Article = ({ doc, articles }) => {
                       </a>
                     </Link>
                   </li>
-                  <li className={styles.articlesdetail__heading__snsItem}>
+                  {/* TwitterIcon */}
+                  {/* <li className={styles.articlesdetail__heading__snsItem}>
                     <Link href="/">
                       <a className={styles.articlesdetail__heading__snsLink}>
                         <div className={styles.articlesdetail__heading__snsImg}>
@@ -162,11 +170,13 @@ const Article = ({ doc, articles }) => {
                         </div>
                       </a>
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
+            {/* 記事本文 */}
             <div className={styles.articlesdetail__content}>{content}</div>
+            {/* 語り手情報 */}
             <div className={styles.articlesdetail__relatedLink}>
               <h2 className={styles.articlesdetail__relatedLink__heading}>
                 {interviewee_name}
@@ -201,7 +211,8 @@ const Article = ({ doc, articles }) => {
                 </a>
               )}
             </div>
-            <div className={styles.articlesdetail__editor}>
+            {/* 聞き手情報 */}
+            {/* <div className={styles.articlesdetail__editor}>
               <div className={styles.articlesdetail__editor__img}>
                 {hasEditorPic ? (
                   <Image
@@ -234,7 +245,7 @@ const Article = ({ doc, articles }) => {
                   URL：{`${editor_link}`}
                 </a>
               )}
-            </div>
+            </div> */}
           </div>
           <div className={styles.articlesdetail__pickup}>
             <div className={styles.articlesdetail__pickup__heading}>

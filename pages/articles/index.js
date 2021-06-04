@@ -71,7 +71,6 @@ const Articles = ({ articles }) => {
 // }
 
 export async function getServerSideProps(context) {
-  console.log("context", context.query);
   const client = Client();
 
   if (context.query.tag) {
