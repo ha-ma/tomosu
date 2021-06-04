@@ -158,6 +158,7 @@
       img {
         width: 100%!important;
         height: auto!important;
+        object-fit: cover;
       }
     }
   }
@@ -807,6 +808,7 @@
         img {
           width: 100%!important;
           height: auto!important;
+          object-fit: cover;
         }
       }
     }
