@@ -1,0 +1,23 @@
+.layoutContainer {
+  color: #3B4043;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.layoutMain {
+  width: calc(100% - 520px);
+  transition: all 0.5s ease;
+  @media (max-width: 1599px) {
+    width: calc(100% - 420px);
+  }
+  @media (max-width: 1439px) {
+    width: calc(100% - 350px);
+  }
+  @media (max-width: 1279px) {
+    width: 100%;
+    padding-top: 80px;
+    position: relative;
+    z-index: 100;
+  }
+}
