@@ -7,8 +7,13 @@ import { RichText, LinkResolver } from "prismic-reactjs";
 import Prismic from "@prismicio/client";
 import { Client } from "../../prismic-configuration";
 import { queryRepeatableDocuments } from "../../util/queries";
+import { useRouter } from "next/router";
 
 function News({ doc }) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   if (doc && doc.data) {
     const dt = new Date(doc.first_publication_date);
     const year = dt.getFullYear();
@@ -18,7 +23,9 @@ function News({ doc }) {
     const hasTitle = doc.data.title.length !== 0;
     const hasContent = doc.data.content.length !== 0;
     const title = hasTitle ? RichText.asText(doc.data.title) : "Untitled";
-    const content = hasContent ? RichText.render(doc.data.content, LinkResolver) : "";
+    const content = hasContent
+      ? RichText.render(doc.data.content, LinkResolver)
+      : "";
     return (
       <>
         <PageHero imagePath={doc.data.eyecatch.url} />
@@ -26,16 +33,22 @@ function News({ doc }) {
           <div className={styles.newsdetail__container}>
             <div className={styles.newsdetail__heading}>
               <div className={styles.newsdetail__heading__top}>
-                <p className={styles.newsdetail__heading__category}>{doc.data.categories}</p>
-                <p className={styles.newsdetail__heading__time}>{publishDate}</p>
+                <p className={styles.newsdetail__heading__category}>
+                  {doc.data.categories}
+                </p>
+                <p className={styles.newsdetail__heading__time}>
+                  {publishDate}
+                </p>
               </div>
               <h1 className={styles.newsdetail__heading__title}>{title}</h1>
               <div className={styles.newsdetail__heading__bottom}>
                 <ul className={styles.newsdetail__heading__hashList}>
-                  {doc.tags.map(tag => (
+                  {doc.tags.map((tag) => (
                     <li className={styles.newsdetail__heading__hashItem}>
                       <Link href="/">
-                        <a className={styles.newsdetail__heading__hashLink}>{`#${tag}`}</a>
+                        <a
+                          className={styles.newsdetail__heading__hashLink}
+                        >{`#${tag}`}</a>
                       </Link>
                     </li>
                   ))}
@@ -45,7 +58,12 @@ function News({ doc }) {
                     <Link href="/">
                       <a className={styles.newsdetail__heading__snsLink}>
                         <div className={styles.newsdetail__heading__snsImg}>
-                          <Image src="/images/icon/icon_fb_gr.png" quality={100} width={75} height={150} />
+                          <Image
+                            src="/images/icon/icon_fb_gr.png"
+                            quality={100}
+                            width={75}
+                            height={150}
+                          />
                         </div>
                       </a>
                     </Link>
@@ -54,7 +72,12 @@ function News({ doc }) {
                     <Link href="/">
                       <a className={styles.newsdetail__heading__snsLink}>
                         <div className={styles.newsdetail__heading__snsImg}>
-                          <Image src="/images/icon/icon_tw_gr.png" quality={100} width={150} height={120} />
+                          <Image
+                            src="/images/icon/icon_tw_gr.png"
+                            quality={100}
+                            width={150}
+                            height={120}
+                          />
                         </div>
                       </a>
                     </Link>
@@ -82,16 +105,18 @@ export async function getStaticProps({ params }) {
   const doc = await client.getByUID("news", params.uid);
   return {
     props: {
-      doc
-    }
+      doc,
+    },
   };
 }
 
 export async function getStaticPaths() {
-  const documents = await queryRepeatableDocuments(doc => doc.type === "news");
+  const documents = await queryRepeatableDocuments(
+    (doc) => doc.type === "news"
+  );
   return {
     // You can run a separate query here to get dynamic parameters from your documents.
-    paths: documents.map(doc => `/news/${doc.uid}`),
-    fallback: true
+    paths: documents.map((doc) => `/news/${doc.uid}`),
+    fallback: true,
   };
 }
