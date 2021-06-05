@@ -12,13 +12,7 @@ function BottomSNS() {
           <li className={styles.bottomSns__item}>
             <Link href="https://www.facebook.com/tomosu.life">
               <a target="_blank" className={styles.bottomSns__link}>
-                <Image
-                  src="/images/icon/icon_fb_gr.png"
-                  quality={100}
-                  width={75}
-                  height={150}
-                  className={styles.bottomSns__icon}
-                />
+                <Image src="/images/icon/icon_fb_gr.png" quality={100} width={32} height={64} className={styles.bottomSns__icon} />
               </a>
             </Link>
           </li>

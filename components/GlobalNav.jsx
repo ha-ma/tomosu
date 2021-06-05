@@ -7,8 +7,11 @@ import { Client } from "../prismic-configuration";
 
 function GlobalNav() {
   const [tags, setTags] = useState([]);
+  const [spNavState, setSpNavState] = useState(
+    typeof window !== "undefined" && window.innerWidth > 1279 ? false : true
+  );
+  const [logoScale, setLogoScale] = useState(false);
   const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
-  console.log(tags);
   useEffect(() => {
     const fetchData = async () => {
       const client = Client();
@@ -31,46 +34,50 @@ function GlobalNav() {
 
   if (typeof window !== "undefined") {
     //　スクロールでロゴ拡大・縮小
-    // if(window.innerWidth > 1279) {
-    window.onscroll = function () {
-      const logoScale = document.getElementById("globalNav__logo");
-      if (document.documentElement.scrollTop > 20) {
-        if (logoScale) {
-          logoScale.classList.add(styles.fixed);
+    if (window.innerWidth > 1279) {
+      window.onscroll = function () {
+        const logoScale = document.getElementById("globalNav__logo");
+        if (document.documentElement.scrollTop > 20) {
+          if (logoScale) {
+            logoScale.classList.remove(styles.fixed);
+            logoScale.classList.add(styles.fixed);
+          }
+        } else {
+          if (logoScale) {
+            logoScale.classList.remove(styles.fixed);
+          }
         }
-      } else {
-        if (logoScale) {
-          logoScale.classList.remove(styles.fixed);
-        }
-      }
-    };
-    // }
-    // SPメニューボタン
-    if (window.innerWidth < 1279) {
-      const spNav = document.getElementById("globalNav__spNav");
-      const spMenu = document.getElementById("globalNav__spMenu");
-      const spButton = document.getElementById("globalNav__spMenuButton");
-      if (spButton) {
-        spButton.addEventListener(
-          "click",
-          function (e) {
-            spButton.classList.toggle(styles.open);
-            const spHasClass = spButton.classList.contains(styles.open);
-            if (spHasClass) {
-              spMenu.classList.add(styles.showMenu);
-              spNav.classList.add(styles.showNav);
-            } else {
-              spMenu.classList.remove(styles.showMenu);
-              spNav.classList.remove(styles.showNav);
-            }
-          },
-          false
-        );
-      }
+      };
     }
+    // SPメニューボタン;s
+    // if (window.innerWidth < 1279) {
+    //   const spNav = document.getElementById("globalNav__spNav");
+    //   const spMenu = document.getElementById("globalNav__spMenu");
+    //   const spButton = document.getElementById("globalNav__spMenuButton");
+    //   if (spButton) {
+    //     spButton.addEventListener(
+    //       "click",
+    //       function (e) {
+    //         spButton.classList.toggle(styles.open);
+    //         const spHasClass = spButton.classList.contains(styles.open);
+    //         if (spHasClass) {
+    //           spMenu.classList.add(styles.showMenu);
+    //           spNav.classList.add(styles.showNav);
+    //         } else {
+    //           spMenu.classList.remove(styles.showMenu);
+    //           spNav.classList.remove(styles.showNav);
+    //         }
+    //       },
+    //       false
+    //     );
+    //   }
+    // }
   }
+  const handleSpMenuButtonClick = () => {
+    setSpNavState(!spNavState);
+  };
   return (
-    <aside className={styles.globalNav} id="globalNav__spNav">
+    <aside className={spNavState ? styles.globalNav__shown : styles.globalNav}>
       <div className={styles.globalNav__logo}>
         <p className={styles.globalNav__logo__catch}>
           道東の未来を灯すSDGsマガジン
@@ -88,7 +95,14 @@ function GlobalNav() {
           </Link>
         </div>
       </div>
-      <div className={styles.globalNav__container} id="globalNav__spMenu">
+
+      <div
+        className={
+          spNavState
+            ? styles.globalNav__container__shown
+            : styles.globalNav__container
+        }
+      >
         <div className={styles.globalNav__splogo}>
           <p className={styles.globalNav__splogo__catch}>
             道東の未来を灯すSDGsマガジン
@@ -129,8 +143,8 @@ function GlobalNav() {
           <dt>キーワードから読む</dt>
           <dd>
             <ul className={styles.globalNav__keyword__list}>
-              {tags.map((tag) => (
-                <li key={tag} className={styles.globalNav__keyword__item}>
+              {tags.map((tag, i) => (
+                <li key={i} className={styles.globalNav__keyword__item}>
                   <Link
                     href={{ pathname: "/articles", query: { tag: tag.text } }}
                   >
@@ -174,7 +188,7 @@ function GlobalNav() {
                 </a>
               </Link>
             </li>
-            <li className={styles.globalNav__bottomMenu__snsItem}>
+            {/* <li className={styles.globalNav__bottomMenu__snsItem}>
               <Link href="#">
                 <a
                   className={styles.globalNav__bottomMenu__snsLink}
@@ -188,13 +202,18 @@ function GlobalNav() {
                   />
                 </a>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
+
       <p
-        className={styles.globalNav__spMenuButton}
-        id="globalNav__spMenuButton"
+        className={
+          spNavState
+            ? styles.globalNav__spMenuButton__open
+            : styles.globalNav__spMenuButton
+        }
+        onClick={handleSpMenuButtonClick}
       >
         <span>&nbsp;</span>
       </p>
