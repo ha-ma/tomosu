@@ -7,7 +7,10 @@ import { Client } from "../prismic-configuration";
 
 function GlobalNav() {
   const [tags, setTags] = useState([]);
-  const [spNavState, setSpNavState] = useState(false);
+  const [spNavState, setSpNavState] = useState(
+    typeof window !== "undefined" && window.innerWidth > 1279 ? false : true
+  );
+  const [logoScale, setLogoScale] = useState(false);
   const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +39,7 @@ function GlobalNav() {
         const logoScale = document.getElementById("globalNav__logo");
         if (document.documentElement.scrollTop > 20) {
           if (logoScale) {
+            logoScale.classList.remove(styles.fixed);
             logoScale.classList.add(styles.fixed);
           }
         } else {
