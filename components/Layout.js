@@ -1,9 +1,9 @@
-import React from 'react'
-import GlobalNav from './GlobalNav'
-import styles from './Layout.module.scss'
-import Head from 'next/head'
+import React from "react";
+import GlobalNav from "./GlobalNav";
+import styles from "./Layout.module.scss";
+import Head from "next/head";
 
-export const siteTitle = 'TOMOSU'
+export const siteTitle = "TOMOSU";
 
 function Layout({ children }) {
   return (
@@ -25,11 +25,9 @@ function Layout({ children }) {
       </Head>
 
       <GlobalNav />
-      <main className={styles.layoutMain}>
-        {children}
-      </main>
+      <main className={styles.layoutMain}>{children}</main>
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
