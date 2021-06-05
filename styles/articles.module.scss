@@ -25,7 +25,7 @@
     &__en {
       font-size: 86px;
       font-weight: bold;
-      font-family: 'Noto Sans', sans-serif;
+      font-family: "Noto Sans", sans-serif;
       margin-right: 101px;
       @media (max-width: 1800px) {
         font-size: 76px;
@@ -76,7 +76,7 @@
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     box-sizing: border-box;
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     @media (max-width: 1279px) {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
@@ -101,7 +101,7 @@
       width: 100%;
       margin-bottom: 56px;
     }
-    &:nth-last-child(-n+2) {
+    &:nth-last-child(-n + 2) {
       margin-bottom: 0;
       @media (max-width: 700px) {
         margin-bottom: 56px;
@@ -144,7 +144,7 @@
   &__link {
     display: block;
     &:hover {
-      opacity: .6;
+      opacity: 0.6;
     }
   }
   &__img {
@@ -154,10 +154,10 @@
     }
     & > div {
       border-radius: 10px;
-      display: block!important;
+      display: block !important;
       img {
-        width: 100%!important;
-        height: auto!important;
+        width: 100% !important;
+        height: auto !important;
         object-fit: cover;
       }
     }
@@ -173,7 +173,7 @@
       border-radius: 4px;
       box-sizing: border-box;
       display: inline-block;
-      background-color: #3B4043;
+      background-color: #3b4043;
       @media (max-width: 1279px) {
         font-size: 12px;
         margin-bottom: 12px;
@@ -199,7 +199,6 @@
     }
   }
 }
-
 
 .articlesdetail {
   &__container {
@@ -258,7 +257,7 @@
       padding: 10px;
       border-radius: 4px;
       box-sizing: border-box;
-      background-color: #3B4043;
+      background-color: #3b4043;
       @media (max-width: 1599px) {
         font-size: 16px;
       }
@@ -272,7 +271,7 @@
     }
     &__time {
       font-size: 18px;
-      color: #7E7F80;
+      color: #7e7f80;
       @media (max-width: 1599px) {
         font-size: 16px;
       }
@@ -372,11 +371,11 @@
         padding-right: 50px;
       }
       & > div {
-        display: block!important;
+        display: block !important;
       }
       img {
-        width: 100%!important;
-        height: auto!important;
+        width: 100% !important;
+        height: auto !important;
       }
     }
     &__iconItem {
@@ -440,8 +439,8 @@
     }
     &__snsImg {
       img {
-        width: 100%!important;
-        height: auto!important;
+        width: 100% !important;
+        height: auto !important;
       }
     }
   }
@@ -521,8 +520,8 @@
         min-height: 30px;
       }
       img {
-        width: 100%!important;
-        height: auto!important;
+        width: 100% !important;
+        height: auto !important;
       }
     }
     &__link {
@@ -570,9 +569,9 @@
         transform: translateY(0);
       }
       & > div {
-        display: block!important;
+        display: block !important;
         img {
-          width: 100%!important;
+          width: 100% !important;
           object-fit: cover;
           border-radius: 50%;
         }
@@ -580,7 +579,7 @@
     }
     &__desc {
       font-size: 22px;
-      line-height: 2.0;
+      line-height: 2;
       width: calc(100% - 387px);
       margin-bottom: 29px;
       @media (max-width: 1279px) {
@@ -600,7 +599,7 @@
   &__editor {
     padding: 77px 64px;
     box-sizing: border-box;
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     position: relative;
     @media (max-width: 1279px) {
       padding: 36px 21px 46px 25px;
@@ -629,9 +628,9 @@
         transform: translateY(0);
       }
       & > div {
-        display: block!important;
+        display: block !important;
         img {
-          width: 100%!important;
+          width: 100% !important;
           object-fit: cover;
           border-radius: 50%;
         }
@@ -639,7 +638,7 @@
     }
     &__desc {
       font-size: 22px;
-      line-height: 2.0;
+      line-height: 2;
       width: calc(100% - 387px);
       margin-bottom: 29px;
       @media (max-width: 1279px) {
@@ -672,7 +671,7 @@
       &__en {
         font-size: 86px;
         font-weight: bold;
-        font-family: 'Noto Sans', sans-serif;
+        font-family: "Noto Sans", sans-serif;
         margin-right: 102px;
         @media (max-width: 1800px) {
           font-size: 76px;
@@ -724,7 +723,7 @@
       border-top-left-radius: 50px;
       border-bottom-left-radius: 50px;
       box-sizing: border-box;
-      background-color: #F8F8F8;
+      background-color: #f8f8f8;
       @media (max-width: 1439px) {
         padding: 63px 43px 80px;
       }
@@ -741,7 +740,7 @@
       align-items: flex-start;
       justify-content: space-between;
       flex-wrap: wrap;
-      background-color: #F8F8F8;
+      background-color: #f8f8f8;
       @media (max-width: 1279px) {
         margin-bottom: 86px;
         display: block;
@@ -754,7 +753,7 @@
         width: 100%;
         margin-bottom: 56px;
       }
-      &:nth-last-child(-n+2) {
+      &:nth-last-child(-n + 2) {
         margin-bottom: 0;
         @media (max-width: 1279px) {
           margin-bottom: 56px;
@@ -794,7 +793,7 @@
     &__link {
       display: block;
       &:hover {
-        opacity: .6;
+        opacity: 0.6;
       }
     }
     &__img {
@@ -804,10 +803,10 @@
       }
       & > div {
         border-radius: 10px;
-        display: block!important;
+        display: block !important;
         img {
-          width: 100%!important;
-          height: auto!important;
+          width: 100% !important;
+          height: auto !important;
           object-fit: cover;
         }
       }
@@ -824,7 +823,7 @@
         border-radius: 4px;
         box-sizing: border-box;
         display: inline-block;
-        background-color: #3B4043;
+        background-color: #3b4043;
         @media (max-width: 1279px) {
           font-size: 12px;
           min-width: 102px;
@@ -845,7 +844,7 @@
       &__link {
         display: inline-block;
         &:hover {
-          opacity: .6;
+          opacity: 0.6;
         }
       }
     }
@@ -855,7 +854,7 @@
       width: 100%;
       margin: 0 auto;
       border-radius: 50px;
-      background-color: #FFE100;
+      background-color: #ffe100;
       @media (max-width: 1279px) {
         max-width: 206px;
       }
@@ -873,5 +872,3 @@
     }
   }
 }
-
-

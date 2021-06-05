@@ -8,22 +8,22 @@ import { Client } from "../prismic-configuration";
 function GlobalNav() {
   const [tags, setTags] = useState([]);
   const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
-
+  console.log(tags);
   useEffect(() => {
     const fetchData = async () => {
       const client = Client();
 
-      const res = await client.query(Prismic.Predicates.at("document.type", "article"), {
-        // orderings: "[my.article.date desc]"
-      });
+      const res = await client.query(
+        Prismic.Predicates.at("document.type", "tags"),
+        {
+          // orderings: "[my.article.date desc]"
+        }
+      );
       if (res) {
-
-        const tag_list = res.results.flatMap(article => {
-          return article.tags.map(tag => {
-            return tag;
-          })
-        })
-        setTags(tag_list)
+        const tag_list = res.results
+          .map((result) => result.data)
+          .flatMap((item) => item.tag);
+        setTags(tag_list);
       }
     };
     fetchData();
@@ -72,22 +72,36 @@ function GlobalNav() {
   return (
     <aside className={styles.globalNav} id="globalNav__spNav">
       <div className={styles.globalNav__logo}>
-        <p className={styles.globalNav__logo__catch}>道東の未来を灯すSDGsマガジン</p>
+        <p className={styles.globalNav__logo__catch}>
+          道東の未来を灯すSDGsマガジン
+        </p>
         <div className={styles.globalNav__logo__img} id="globalNav__logo">
           <Link href="/">
             <a className={styles.globalNav__logo__link}>
-              <Image src="/images/logo.png" quality={100} width={631} height={227} />
+              <Image
+                src="/images/logo.png"
+                quality={100}
+                width={631}
+                height={227}
+              />
             </a>
           </Link>
         </div>
       </div>
       <div className={styles.globalNav__container} id="globalNav__spMenu">
         <div className={styles.globalNav__splogo}>
-          <p className={styles.globalNav__splogo__catch}>道東の未来を灯すSDGsマガジン</p>
+          <p className={styles.globalNav__splogo__catch}>
+            道東の未来を灯すSDGsマガジン
+          </p>
           <div className={styles.globalNav__splogo__img}>
             <Link href="/">
               <a className={styles.globalNav__splogo__link}>
-                <Image src="/images/logo_wh.png" quality={100} width={353} height={72} />
+                <Image
+                  src="/images/logo_wh.png"
+                  quality={100}
+                  width={353}
+                  height={72}
+                />
               </a>
             </Link>
           </div>
@@ -99,7 +113,7 @@ function GlobalNav() {
                 <a className={styles.globalNav__link}>記事一覧</a>
               </Link>
             </li>
-            <li className={styles.globalNav__item}>
+            {/* <li className={styles.globalNav__item}>
               <Link href="/about">
                 <a className={styles.globalNav__link}>私たちのこと</a>
               </Link>
@@ -108,17 +122,21 @@ function GlobalNav() {
               <Link href="/sdgs">
                 <a className={styles.globalNav__link}>SDGsについて</a>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
         <dl className={styles.globalNav__keyword}>
           <dt>キーワードから読む</dt>
           <dd>
             <ul className={styles.globalNav__keyword__list}>
-              {tags.map(tag => (
+              {tags.map((tag) => (
                 <li key={tag} className={styles.globalNav__keyword__item}>
-                  <Link href={{ pathname: '/articles', query: { tag: tag } }}>
-                    <a className={styles.globalNav__keyword__link}>#{tag}</a>
+                  <Link
+                    href={{ pathname: "/articles", query: { tag: tag.text } }}
+                  >
+                    <a className={styles.globalNav__keyword__link}>
+                      #{tag.text}
+                    </a>
                   </Link>
                 </li>
               ))}
@@ -127,11 +145,13 @@ function GlobalNav() {
         </dl>
         <div className={styles.globalNav__bottomMenu}>
           <ul className={styles.globalNav__bottomMenu__list}>
-            <li className={styles.globalNav__bottomMenu__item}>
+            {/* <li className={styles.globalNav__bottomMenu__item}>
               <Link href="/contact">
-                <a className={styles.globalNav__bottomMenu__link}>〉お問い合わせ</a>
+                <a className={styles.globalNav__bottomMenu__link}>
+                  〉お問い合わせ
+                </a>
               </Link>
-            </li>
+            </li> */}
             <li className={styles.globalNav__bottomMenu__item}>
               <Link href="/news">
                 <a className={styles.globalNav__bottomMenu__link}>〉お知らせ</a>
@@ -141,22 +161,41 @@ function GlobalNav() {
           <ul className={styles.globalNav__bottomMenu__snsList}>
             <li className={styles.globalNav__bottomMenu__snsItem}>
               <Link href="#">
-                <a className={styles.globalNav__bottomMenu__snsLnk} target="_blank">
-                  <Image src="/images/icon/icon_fb_wh.png" quality={100} width={19} height={37} />
+                <a
+                  className={styles.globalNav__bottomMenu__snsLnk}
+                  target="_blank"
+                >
+                  <Image
+                    src="/images/icon/icon_fb_wh.png"
+                    quality={100}
+                    width={19}
+                    height={37}
+                  />
                 </a>
               </Link>
             </li>
             <li className={styles.globalNav__bottomMenu__snsItem}>
               <Link href="#">
-                <a className={styles.globalNav__bottomMenu__snsLink} target="_blank">
-                  <Image src="/images/icon/icon_tw_wh.png" quality={100} width={37} height={30} />
+                <a
+                  className={styles.globalNav__bottomMenu__snsLink}
+                  target="_blank"
+                >
+                  <Image
+                    src="/images/icon/icon_tw_wh.png"
+                    quality={100}
+                    width={37}
+                    height={30}
+                  />
                 </a>
               </Link>
             </li>
           </ul>
         </div>
       </div>
-      <p className={styles.globalNav__spMenuButton} id="globalNav__spMenuButton">
+      <p
+        className={styles.globalNav__spMenuButton}
+        id="globalNav__spMenuButton"
+      >
         <span>&nbsp;</span>
       </p>
     </aside>
