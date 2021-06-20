@@ -5,7 +5,6 @@ import Head from "next/head";
 import { useWindowWidth } from "./useWindowWidth";
 
 export const siteTitle = "TOMOSU";
-
 function Layout({ children }) {
   const width = useWindowWidth();
   return (
