@@ -12,17 +12,29 @@ function BottomSNS() {
           <li className={styles.bottomSns__item}>
             <Link href="https://www.facebook.com/tomosu.life">
               <a target="_blank" className={styles.bottomSns__link}>
-                <Image src="/images/icon/icon_fb_gr.png" quality={100} width={32} height={64} className={styles.bottomSns__icon} />
+                <Image
+                  src="/images/icon/icon_fb_gr.png"
+                  quality={100}
+                  width={18}
+                  height={36}
+                  className={styles.bottomSns__icon}
+                />
               </a>
             </Link>
           </li>
-          {/* <li className={styles.bottomSns__item}>
-            <Link href="">
+          <li className={styles.bottomSns__item}>
+            <Link href="https://twitter.com/STomosu">
               <a target="_blank" className={styles.bottomSns__link}>
-                <Image src='/images/icon/icon_tw_gr.png' quality={100} width={150} height={120} className={styles.bottomSns__icon} />
+                <Image
+                  src="/images/icon/icon_tw_gr.png"
+                  quality={100}
+                  width={150}
+                  height={120}
+                  className={styles.bottomSns__icon}
+                />
               </a>
             </Link>
-          </li> */}
+          </li>
         </ul>
         <p className={styles.bottomSns__desc}>
           SNSでも情報発信中です! <br className={styles.bottomSns__newLine} />

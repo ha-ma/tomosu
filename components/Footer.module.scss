@@ -1,6 +1,10 @@
 .footer {
   color: #fff;
   background-color: #3b4043;
+  border-radius: 50px 0 0 0;
+  @media (max-width: 700px) {
+    border-radius: 0 0 0 0;
+  }
   &__container {
     padding: 72px 4.2% 64px;
     box-sizing: border-box;
@@ -110,14 +114,14 @@
   }
   &__sns {
     position: absolute;
-    right: 0;
-    bottom: -77px;
+    right: 42px;
+    bottom: 62px;
     @media (max-width: 700px) {
       max-width: 76px;
       margin: 0 auto;
-      top: -90px;
+      top: 50px;
       bottom: auto;
-      left: 0;
+      left: 110px;
       right: 0;
     }
     &__list {

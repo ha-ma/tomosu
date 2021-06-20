@@ -519,6 +519,9 @@
         font-size: 14px;
         min-height: 30px;
       }
+      @media (max-width: 700px) {
+        padding-right: 0px;
+      }
       img {
         width: 100% !important;
         height: auto !important;

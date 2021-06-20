@@ -369,6 +369,7 @@
       display: none;
       @media (max-width: 1279px) {
         display: flex;
+        align-items: center;
       }
     }
     &__snsItem {
@@ -376,7 +377,7 @@
       &:first-child {
         @media (max-width: 700px) {
           width: 14px;
-          margin-right: 30px;
+          margin-right: 45px;
         }
       }
       &:last-child {

@@ -157,8 +157,8 @@ const Article = ({ doc }) => {
                     </Link>
                   </li>
                   {/* TwitterIcon */}
-                  {/* <li className={styles.articlesdetail__heading__snsItem}>
-                    <Link href="/">
+                  <li className={styles.articlesdetail__heading__snsItem}>
+                    <Link href="https://twitter.com/STomosu">
                       <a className={styles.articlesdetail__heading__snsLink}>
                         <div className={styles.articlesdetail__heading__snsImg}>
                           <Image
@@ -170,7 +170,7 @@ const Article = ({ doc }) => {
                         </div>
                       </a>
                     </Link>
-                  </li> */}
+                  </li>
                 </ul>
               </div>
             </div>
