@@ -13,6 +13,7 @@ import {
   sdgsIconSwitch,
 } from "../../components/sdgsDisplayGenerator";
 import { useRouter } from "next/router";
+import { TwitterShareButton, FacebookShareButton } from "react-share";
 
 const Article = ({ doc }) => {
   console.log("docdocdoc", doc);
@@ -37,12 +38,8 @@ const Article = ({ doc }) => {
     fetchData();
   }, []);
 
-  const router = useRouter();
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
-
   if (doc && doc.data) {
+    console.log(doc);
     const dt = new Date(doc.first_publication_date);
     const year = dt.getFullYear();
     const month = ("00" + (dt.getMonth() + 1)).slice(-2);
@@ -143,33 +140,33 @@ const Article = ({ doc }) => {
                 <ul className={styles.articlesdetail__heading__snsList}>
                   <li className={styles.articlesdetail__heading__snsItem}>
                     {/* FacebookIcon */}
-                    <Link href="https://www.facebook.com/tomosu.life">
-                      <a className={styles.articlesdetail__heading__snsLink}>
-                        <div className={styles.articlesdetail__heading__snsImg}>
-                          <Image
-                            src="/images/icon/icon_fb_gr.png"
-                            quality={100}
-                            width={75}
-                            height={150}
-                          />
-                        </div>
-                      </a>
-                    </Link>
+                    <FacebookShareButton
+                      url={`https://tomosu.life/articles/${doc.uid}`}
+                    >
+                      <div className={styles.articlesdetail__heading__snsImg}>
+                        <Image
+                          src="/images/icon/icon_fb_gr.png"
+                          quality={100}
+                          width={75}
+                          height={150}
+                        />
+                      </div>
+                    </FacebookShareButton>
                   </li>
                   {/* TwitterIcon */}
                   <li className={styles.articlesdetail__heading__snsItem}>
-                    <Link href="https://twitter.com/STomosu">
-                      <a className={styles.articlesdetail__heading__snsLink}>
-                        <div className={styles.articlesdetail__heading__snsImg}>
-                          <Image
-                            src="/images/icon/icon_tw_gr.png"
-                            quality={100}
-                            width={150}
-                            height={120}
-                          />
-                        </div>
-                      </a>
-                    </Link>
+                    <TwitterShareButton
+                      url={`https://tomosu.life/articles/${doc.uid}`}
+                    >
+                      <div className={styles.articlesdetail__heading__snsImg}>
+                        <Image
+                          src="/images/icon/icon_tw_gr.png"
+                          quality={100}
+                          width={150}
+                          height={120}
+                        />
+                      </div>
+                    </TwitterShareButton>
                   </li>
                 </ul>
               </div>
