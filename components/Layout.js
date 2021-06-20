@@ -2,10 +2,12 @@ import React from "react";
 import GlobalNav from "./GlobalNav";
 import styles from "./Layout.module.scss";
 import Head from "next/head";
+import { useWindowWidth } from "./useWindowWidth";
 
 export const siteTitle = "TOMOSU";
 
 function Layout({ children }) {
+  const width = useWindowWidth();
   return (
     <div className={styles.layoutContainer}>
       <Head>
@@ -24,7 +26,7 @@ function Layout({ children }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <GlobalNav />
+      <GlobalNav width={width} />
       <main className={styles.layoutMain}>{children}</main>
     </div>
   );

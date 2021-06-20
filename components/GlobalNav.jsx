@@ -5,12 +5,10 @@ import Image from "next/image";
 import Prismic from "@prismicio/client";
 import { Client } from "../prismic-configuration";
 
-function GlobalNav() {
+function GlobalNav({ width }) {
   const [tags, setTags] = useState([]);
-  const [spNavState, setSpNavState] = useState(
-    typeof window !== "undefined" && window.innerWidth > 1279 ? false : true
-  );
-  const [logoScale, setLogoScale] = useState(false);
+  console.log("innerWidth", width);
+  const [glovalNavIsShown, setGlovalNavIsShown] = useState(true);
   const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +29,14 @@ function GlobalNav() {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (width < 1280) {
+      setGlovalNavIsShown(false);
+    } else {
+      setGlovalNavIsShown(true);
+    }
+  }, [width]);
 
   if (typeof window !== "undefined") {
     //　スクロールでロゴ拡大・縮小
@@ -74,10 +80,12 @@ function GlobalNav() {
     // }
   }
   const handleSpMenuButtonClick = () => {
-    setSpNavState(!spNavState);
+    setGlovalNavIsShown(!glovalNavIsShown);
   };
   return (
-    <aside className={spNavState ? styles.globalNav__shown : styles.globalNav}>
+    <aside
+      className={glovalNavIsShown ? styles.globalNav__shown : styles.globalNav}
+    >
       <div className={styles.globalNav__logo}>
         <p className={styles.globalNav__logo__catch}>
           道東の未来を灯すSDGsマガジン
@@ -98,7 +106,7 @@ function GlobalNav() {
 
       <div
         className={
-          spNavState
+          glovalNavIsShown
             ? styles.globalNav__container__shown
             : styles.globalNav__container
         }
@@ -209,7 +217,7 @@ function GlobalNav() {
 
       <p
         className={
-          spNavState
+          glovalNavIsShown
             ? styles.globalNav__spMenuButton__open
             : styles.globalNav__spMenuButton
         }
