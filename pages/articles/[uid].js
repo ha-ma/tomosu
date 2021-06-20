@@ -40,7 +40,7 @@ const Article = ({ doc }) => {
 
   if (doc && doc.data) {
     console.log(doc);
-    const dt = new Date(doc.first_publication_date);
+    const dt = new Date(doc.last_publication_date);
     const year = dt.getFullYear();
     const month = ("00" + (dt.getMonth() + 1)).slice(-2);
     const date = ("00" + dt.getDate()).slice(-2);
