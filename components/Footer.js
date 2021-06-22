@@ -19,12 +19,12 @@ function Footer() {
                 <Link href="/about">
                   <a className={styles.footer__link}>私たちのこと</a>
                 </Link>
-              </li>
+              </li> */}
               <li className={styles.footer__item}>
                 <Link href="/sdgs">
                   <a className={styles.footer__link}>SDGsについて</a>
                 </Link>
-              </li> */}
+              </li>
               <li className={styles.footer__item}>
                 <Link href="/news">
                   <a className={styles.footer__link}>お知らせ</a>
@@ -44,31 +44,36 @@ function Footer() {
                   </Link>
                 </li>
               </ul>
-
-              <div className={styles.footer__sns}>
-                <ul className={styles.footer__sns__list}>
-                  <li className={styles.footer__sns__item}>
-                    <Link href="https://www.facebook.com/tomosu.life">
-                      <a target="_blank" className={styles.footer__sns__link}>
-                        <Image
-                          src="/images/icon/icon_fb_wh.png"
-                          quality={100}
-                          width={36}
-                          height={72}
-                          className={styles.footer__sns__img}
-                        />
-                      </a>
-                    </Link>
-                  </li>
-                  {/* <li className={styles.footer__sns__item}>
-                    <Link href="">
-                      <a target="_blank" className={styles.footer__sns__link}>
-                      <Image src='/images/icon/icon_tw_wh.png' quality={100} width={72} height={58} className={styles.footer__sns__img} />
-                      </a>
-                    </Link>
-                  </li> */}
-                </ul>
-              </div>
+            </div>
+            <div className={styles.footer__sns}>
+              <ul className={styles.footer__sns__list}>
+                <li className={styles.footer__sns__item}>
+                  <Link href="https://www.facebook.com/tomosu.life">
+                    <a target="_blank" className={styles.footer__sns__link}>
+                      <Image
+                        src="/images/icon/icon_fb_wh.png"
+                        quality={100}
+                        width={36}
+                        height={72}
+                        className={styles.footer__sns__img}
+                      />
+                    </a>
+                  </Link>
+                </li>
+                <li className={styles.footer__sns__item}>
+                  <Link href="https://twitter.com/STomosu">
+                    <a target="_blank" className={styles.footer__sns__link}>
+                      <Image
+                        src="/images/icon/icon_tw_wh.png"
+                        quality={100}
+                        width={72}
+                        height={58}
+                        className={styles.footer__sns__img}
+                      />
+                    </a>
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
           <div className={styles.footer__logo}>
