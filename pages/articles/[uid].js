@@ -19,6 +19,8 @@ const Article = ({ doc }) => {
   console.log("docdocdoc", doc);
   const [pickUpArticles, setPicUpArticles] = useState([]);
   const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
+  const router = useRouter();
+  const { isFallback } = router;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +39,10 @@ const Article = ({ doc }) => {
     };
     fetchData();
   }, []);
+
+  if (isFallback) {
+    return <div>loading</div>;
+  }
 
   if (doc && doc.data) {
     console.log(doc);
