@@ -66,15 +66,16 @@
         width: 150px;
         margin-right: 0;
         position: absolute;
-        top: 27px;
+        top: 50%;
+        transform: translateY(-50%);
         left: 55px;
       }
       @media (max-width: 768px) {
         margin-right: auto;
       }
-      &:hover {
-        opacity: 0.6;
-      }
+      // &:hover {
+      //   opacity: 0.6;
+      // }
     }
     &__detail {
       width: 100%;
