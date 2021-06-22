@@ -135,11 +135,11 @@ function GlobalNav({ width }) {
                 <a className={styles.globalNav__link}>記事一覧</a>
               </Link>
             </li>
-            {/* <li className={styles.globalNav__item}>
+            <li className={styles.globalNav__item}>
               <Link href="/about">
                 <a className={styles.globalNav__link}>私たちのこと</a>
               </Link>
-            </li> */}
+            </li>
             <li className={styles.globalNav__item}>
               <Link href="/sdgs">
                 <a className={styles.globalNav__link}>SDGsについて</a>
