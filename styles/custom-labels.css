@@ -1,0 +1,28 @@
+/* 部分選択で適用したとき用 */
+span.red {
+  color: #f06060;
+}
+
+span.green {
+  color: #4eae5b;
+}
+
+span.note {
+  font-size: 15px;
+  display: block;
+  text-align: center;
+}
+
+/* 行で適用したとき用 */
+p.red {
+  color: #f06060;
+}
+
+p.green {
+  color: #4eae5b;
+}
+
+p.note {
+  text-align: center;
+  font-size: 16px !important;
+}
