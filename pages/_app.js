@@ -3,6 +3,7 @@ import BottomContact from "../components/BottomContact";
 import BottomSNS from "../components/BottomSNS";
 import Footer from "../components/Footer";
 import "../styles/reset.scss";
+import "../styles/custom-labels.css";
 import ROuter, { Router } from "next/router";
 import Loading from "../components/Loading";
 import { useState } from "react";
