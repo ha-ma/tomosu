@@ -15,9 +15,7 @@ import {
 import { useRouter } from "next/router";
 import { TwitterShareButton, FacebookShareButton } from "react-share";
 
-const Article = ({ doc }) => {
-  console.log("docdocdoc", doc);
-  console.log("docdocdoc", doc);
+const Article = ({ doc, publishDate }) => {
   const [pickUpArticles, setPicUpArticles] = useState([]);
   const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
   const router = useRouter();
@@ -46,12 +44,12 @@ const Article = ({ doc }) => {
   }
 
   if (doc && doc.data) {
-    console.log(doc);
-    const dt = new Date(doc.last_publication_date);
-    const year = dt.getFullYear();
-    const month = ("00" + (dt.getMonth() + 1)).slice(-2);
-    const date = ("00" + dt.getDate()).slice(-2);
-    const publishDate = `${year}.${month}.${date}`;
+    // console.log(doc);
+    // const dt = new Date(doc.last_publication_date);
+    // const year = dt.getFullYear();
+    // const month = ("00" + (dt.getMonth() + 1)).slice(-2);
+    // const date = ("00" + dt.getDate()).slice(-2);
+    const date = `${publishDate}`;
     const hasTitle = doc.data.title.length !== 0;
     const hasGroup = doc.data.group.length !== 0;
     const hasContent = doc.data.content.length !== 0;
@@ -95,9 +93,7 @@ const Article = ({ doc }) => {
                 <p className={styles.articlesdetail__heading__category}>
                   {doc.data.categories}
                 </p>
-                <p className={styles.articlesdetail__heading__time}>
-                  {publishDate}
-                </p>
+                <p className={styles.articlesdetail__heading__time}>{date}</p>
               </div>
               <div className={styles.articlesdetail__heading__bottom}>
                 <div className={styles.articlesdetail__heading__left}>
@@ -342,10 +338,16 @@ const Article = ({ doc }) => {
 export async function getStaticProps({ params }) {
   const client = Client();
   const doc = await client.getByUID("article", params.uid);
-  console.group(doc);
+  const dt = new Date(doc.last_publication_date);
+  const year = dt.getFullYear();
+  const month = ("00" + (dt.getMonth() + 1)).slice(-2);
+  const date = ("00" + dt.getDate()).slice(-2);
+  const publishDate = `${year}.${month}.${date}`;
+  console.log(publishDate);
   return {
     props: {
       doc,
+      publishDate,
     },
   };
 }
