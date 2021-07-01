@@ -15,7 +15,7 @@ import {
 import { useRouter } from "next/router";
 import { TwitterShareButton, FacebookShareButton } from "react-share";
 
-const Article = ({ doc }) => {
+const Article = ({ doc, publishDate }) => {
   console.log("docdocdoc", doc);
   console.log("docdocdoc", doc);
   const [pickUpArticles, setPicUpArticles] = useState([]);
