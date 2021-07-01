@@ -17,6 +17,7 @@ import { TwitterShareButton, FacebookShareButton } from "react-share";
 
 const Article = ({ doc }) => {
   console.log("docdocdoc", doc);
+  console.log("docdocdoc", doc);
   const [pickUpArticles, setPicUpArticles] = useState([]);
   const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
   const router = useRouter();
