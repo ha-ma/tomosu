@@ -15,13 +15,7 @@ import {
 import { useRouter } from "next/router";
 import { TwitterShareButton, FacebookShareButton } from "react-share";
 
-<<<<<<< HEAD
-const Article = ({ doc }) => {
-  console.log("docdocdoc", doc);
-  console.log("docdocdoc", doc);
-=======
 const Article = ({ doc, publishDate }) => {
->>>>>>> develop
   const [pickUpArticles, setPicUpArticles] = useState([]);
   const apiEndpoint = process.env.NEXT_PUBLIC_PRISMIC_API_END_POINT;
   const router = useRouter();
